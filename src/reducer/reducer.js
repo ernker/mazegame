@@ -4,18 +4,8 @@ export default function reducer(state=initState, action) {
     let newState = Object.assign({}, state);
 
     switch(action.type){
-        /*case 'NAME':
-            let obj = Object.assign({},state.app)
-            obj.name = action.name
-
-            let newobj = Object.assign({}, state, {
-                app: obj
-            })
-
-            return newobj*/
-            
         case 'CODE':
-            newState.runcode = action.payload;
+            newState.app.runcode = action.payload;
 
             return newState;
 
@@ -23,7 +13,7 @@ export default function reducer(state=initState, action) {
             return initState;
 
         case 'MOVE':
-            newState.currentCoords = action.moveToCoords;
+            newState.app.currentCoords = action.moveToCoords;
 
             return newState;
 
