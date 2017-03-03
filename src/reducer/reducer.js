@@ -1,6 +1,7 @@
 import { initState } from '../index.js'
 
 export default function reducer(state=initState, action) {
+    let newState = Object.assign({}, state);
 
     switch(action.type){
         /*case 'NAME':
@@ -14,18 +15,19 @@ export default function reducer(state=initState, action) {
             return newobj*/
             
         case 'CODE':
-            let codeObj = Object.assign({}, state.app)
-            codeObj.runcode = action.payload
+            newState.runcode = action.payload;
 
-            let newcodeObj = Object.assign({}, state, {
-                app: codeObj
-            })
-
-            return newcodeObj
+            return newState;
 
         case 'LOGOUT':
-            return initState
+            return initState;
+
+        case 'MOVE':
+            newState.currentCoords = action.moveToCoords;
+
+            return newState;
+
         default:
-            return state
+            return newState
     }
 }

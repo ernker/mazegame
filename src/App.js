@@ -6,15 +6,15 @@ import Textarea from './components/textarea.js'
 import RulesOfGame from './components/rulesofgame.js'
 import {Grid, Row, Col } from 'react-bootstrap'
 
+import Maze from './lib/Maze.js';
+
+window.Maze = new Maze();
+
 class App extends Component {
   render() {
 
     console.log(this.props)
     
-    window.runCode('print 321')
-        .then(function(out){
-            console.log('Output: ', out);
-        });
     return (
       <div>
         <Grid>
