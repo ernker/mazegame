@@ -8,7 +8,12 @@ class App extends Component {
   render() {
 
     console.log(this.props)
+    
+    //const code = "import maze\nprint maze";
+    //const code = "print 123";
 
+    //console.log(window.execSk(code));
+    window.runCode('print 321');
     return (
       <div>
         <div className="App">
