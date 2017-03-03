@@ -4,6 +4,7 @@ import {Button, Grid, Row, Col, FormGroup, FormControl, ControlLabel } from 'rea
 import CodeMirror from 'react-codemirror'
 import { runcode } from '../action/action'
 import "../../node_modules/codemirror/lib/codemirror.css"
+import MazeCanvas from './mazecanvas'
 
 class Textarea extends React.Component {
     
@@ -35,9 +36,11 @@ class Textarea extends React.Component {
         return (
             
             <div>            
-                <Col  md={6}>Maze MAP</Col>
-                
-                <Col  md={6}>
+                <Col md={6}>
+                    <MazeCanvas>
+                    </MazeCanvas>
+                </Col>
+                <Col md={6}>
                     <CodeMirror value={this.state.textarea} onChange={this.handleChange.bind(this)} options={options} />
                     <br />
                     <Button bsStyle="primary" onClick={this.handleClick.bind(this)}>RUN</Button>
