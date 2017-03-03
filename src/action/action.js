@@ -1,24 +1,29 @@
-export function runcode(code){
+export function runcode(code) {
     return dispatch => {
         window.runCode(code)
             .then(rez => {
                 dispatch(actionTest(rez))
             })
-        .catch ( fail => {
-            dispatch(actionFAIL(fail))
-        })
-
-        }
+            .catch(fail => {
+                dispatch(actionFAIL(fail))
+            })
+    }
 }
 
-export function actionTest(rez){
+export function actionTest(rez) {
     return {
-       type: 'CODE',
-       runcode: rez
+        type: 'CODE',
+        runcode: rez
     };
-
 }
 
-export function actionFAIL(){
+export function actionFAIL() {
     return {};
+}
+
+export function actionMove(coords) {
+    return {
+        type: 'MOVE',
+        moveToCoords: coords
+    };
 }
