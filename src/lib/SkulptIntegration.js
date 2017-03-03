@@ -1,4 +1,10 @@
-var Sk = require('skulpt');
+require('./skulpt.min.js');
+require('./skulpt-stdlib.js');
+Sk.externalLibraries = {
+          maze: {
+            path: '/home/lex/www/mazegame/src/lib/maze/__init__.js'
+        }
+      };
 /* Executes the given code and returns the values of variables in
  * array variables. */
 function exec(code, variables) {
@@ -6,13 +12,15 @@ function exec(code, variables) {
     mainmod,
     result = {'output': output, 'variables': {}},
     varname;
+    console.log(Sk.externalLibraries);
     Sk.configure( { output: function(str) { console.log(str) } } );
-  try {
-      mainmod = Sk.importMainWithBody("<stdin>", false, code);
-      eval(mainmod);
+
+    try {
+    
+      Sk.importMainWithBody("<stdin>", false, code);
     } catch (e) {
-        return {"output": output, "_error": e.args.v[0].v};
-      }
+      return {"output": output, "_error": e.args.v[0].v};
+    }
   return result;
 }
 
