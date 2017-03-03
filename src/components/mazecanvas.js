@@ -32,6 +32,7 @@ class MazeCanvas extends React.Component {
         const {width, height} = ctx.canvas;
         let blockWidth = width / 10;
         let blockHeight = height / 10;
+        ctx.beginPath();
         ctx.clearRect(0, 0, width, height);
         ctx.fillStyle = 'black';
 
@@ -42,14 +43,14 @@ class MazeCanvas extends React.Component {
                 }
             }
         }
-        this.drawBot(ctx, this.props.currentCoords)
+        this.drawBot(ctx, this.props.currentCoords);
+        ctx.endPath();
     }
 
     render() {
         console.log(this.props.app);
 
-        return <Canvas draw={this.drawCanvas} width={400} height={400} realtime
-                       style={{"border": "1px solid #000000"}}/>
+        return <Canvas draw={this.drawCanvas} width={400} height={400} style={{"border": "1px solid #000000"}}/>
     }
 }
 
