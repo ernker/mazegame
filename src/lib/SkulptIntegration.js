@@ -2,7 +2,7 @@ require('./skulpt.min.js');
 require('./skulpt-stdlib.js');
 Sk.externalLibraries = {
           maze: {
-            path: '/home/lex/www/mazegame/src/lib/maze/__init__.js'
+            path: './maze/__init__.js'
         }
       };
 /* Executes the given code and returns the values of variables in
