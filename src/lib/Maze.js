@@ -36,6 +36,7 @@ export default class Maze {
     setCurrentPosition(x, y) {
         if(this.checkFree(x,y)) {
             this.curPos = {x: x, y: y};
+            window.Maze.dispatch(x, y);
         }
 
         return this.curPos;
@@ -70,6 +71,28 @@ export default class Maze {
 
         return this.curPos;
     }
+    
+    left() {
+        let pos = this.getCurrentPosition();
 
+        pos.x = pos.x - 1;
 
+        if(this.checkInMaze(pos.x, pos.y) && this.checkFree(pos.x, pos.y)) {
+            this.setCurrentPosition(pos.x, pos.y);
+        }
+
+        return this.curPos;
+    }
+
+    right() {
+        let pos = this.getCurrentPosition();
+
+        pos.x = pos.x + 1;
+
+        if(this.checkInMaze(pos.x, pos.y) && this.checkFree(pos.x, pos.y)) {
+            this.setCurrentPosition(pos.x, pos.y);
+        }
+
+        return this.curPos;
+    }
 }

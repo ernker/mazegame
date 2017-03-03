@@ -14,6 +14,14 @@ class Textarea extends React.Component {
         this.state = {
             textarea: 'Type here!'
         }
+        
+        let _this = this;
+
+        window.Maze.dispatch = function(x, y) {
+            console.log('Dispatcher');
+            _this.props.dispatch(actionMove({x: x, y: y}))
+        } 
+
     }
 
     handleChange(code){
@@ -21,11 +29,10 @@ class Textarea extends React.Component {
             textarea: code 
         })
     }
-
+    
     handleClick(e){
         e.preventDefault;
         this.props.dispatch(runCodeAsync(this.state.textarea));
-        this.props.dispatch(actionMove({x: 5, y: 5}))
     }
 
     render() {
