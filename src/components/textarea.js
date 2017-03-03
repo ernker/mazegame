@@ -1,7 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import {Button, Grid, Row, Col, FormGroup, FormControl, ControlLabel } from 'react-bootstrap'
+import CodeMirror from 'react-codemirror'
 import { runcode } from '../action/action'
+import "../../node_modules/codemirror/lib/codemirror.css"
+import MazeCanvas from './mazecanvas'
 
 class Textarea extends React.Component {
     
@@ -9,13 +12,13 @@ class Textarea extends React.Component {
         super()
 
         this.state = {
-            textarea: ''
+            textarea: 'Type here!'
         }
     }
 
-    handleChange(event){
+    handleChange(code){
         this.setState({
-            textarea: event.target.value
+            textarea: code 
         })
     }
 
@@ -25,20 +28,27 @@ class Textarea extends React.Component {
     }
 
     render() {
-        return(
-            <Grid>
-                <Row>
-                <Col  md={6}>MAZE MAP</Col>
-                
-                <Col  md={6}>
-                    <FormGroup controlId="formControlsTextarea">
-                        <ControlLabel>Textarea</ControlLabel>
-                        <FormControl componentClass="textarea" placeholder="textarea" onChange={this.handleChange.bind(this)} />
-                    </FormGroup>
+
+        let options = {
+            lineNumbers : true
+        }
+
+        return (
+            
+            <div>            
+                <Col md={6}>
+                    <MazeCanvas>
+                    </MazeCanvas>
+                </Col>
+                <Col md={6}>
+                    <CodeMirror value={this.state.textarea} onChange={this.handleChange.bind(this)} options={options} />
+                    <br />
                     <Button bsStyle="primary" onClick={this.handleClick.bind(this)}>RUN</Button>
                 </Col>
-                </Row>
-            </Grid>
+                <div>
+                    {this.props.app.runcode}
+                </div>
+            </div>
         )
     }
 }
