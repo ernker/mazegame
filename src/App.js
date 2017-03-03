@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import { connect } from 'react-redux';
 import Textarea from './components/textarea.js'
+import RulesOfGame from './components/rulesofgame.js'
 import {Grid, Row, Col } from 'react-bootstrap'
 
 class App extends Component {
@@ -30,7 +31,15 @@ class App extends Component {
           <Row className='show-grid'>
               <Textarea />
           </Row>
-        </Grid>     
+        </Grid>   
+        <Grid>
+          <Row>
+            <Col md={12}>
+        <RulesOfGame />
+           </Col>
+          </Row>
+        </Grid>
+          
       </div>  
     );
   }
