@@ -1,22 +1,24 @@
 import { initState } from '../index.js'
 
 export default function reducer(state=initState, action) {
+    let newState = Object.assign({}, state);
 
     switch(action.type){
         case 'CODE':
-            let codeObj = Object.assign({}, state.code)
+            console.log('Reduced: ', action);
+            console.log('State: ', newState);
+            newState.code.runcode = action.runcode;
 
-            codeObj.runcode = action.runcode;
-
-            let newcodeObj = Object.assign({}, state, {
-                code: codeObj
-            })
-
-            return newcodeObj
+            return newState;
 
         case 'LOGOUT':
-            return initState
+            return initState;
+
+        case 'MOVE':
+            newState.app.currentCoords = action.moveToCoords;
+            return newState;
+
         default:
-            return state
+            return newState
     }
 }

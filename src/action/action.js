@@ -10,8 +10,14 @@ export function runCodeAsync(code){
 
 function runCodeAction(rez) {
     return {
-       type: 'CODE',
-       runcode: rez
+        type: 'CODE',
+        runcode: rez
     };
 
+}
+export function actionMove(coords) {
+    return {
+        type: 'MOVE',
+        moveToCoords: coords
+    };
 }
