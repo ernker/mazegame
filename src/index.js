@@ -6,9 +6,11 @@ import { Provider } from 'react-redux'
 import { Router, hashHistory } from 'react-router'
 import configureStore from './store/store.js'
 
+
 export let initState = {
     app: {
-      name: 'Maze game'
+      name: 'Maze game',
+      runcode: ''
     }
 }
 
