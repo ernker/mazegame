@@ -44,7 +44,7 @@ m = Maze()<br />
 At first, it is Start coordinates, otherwise this call gives current location:
 </sub>
 <p>
-m.get_current_location()
+m.getCurrentPosition()
 </p>
 
             </div>

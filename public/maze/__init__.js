@@ -11,10 +11,26 @@ var $builtinmodule = function(name)
             alert(window.Maze.getMaze());
         });
 
+        $loc.getCurrentPosition = new Sk.builtin.func(function(self) {
+            var pos = window.Maze.getCurrentPosition();
+            alert(pos.x, pos.y);
+        });
+
 
         $loc.up = new Sk.builtin.func(function(self) {
             window.Maze.up();
         });
+
+       $loc.down = new Sk.builtin.func(function(self) {
+            window.Maze.down();
+        });
+       $loc.left = new Sk.builtin.func(function(self) {
+            window.Maze.left();
+        });
+       $loc.right = new Sk.builtin.func(function(self) {
+            window.Maze.right();
+        });
+
     },'Maze', []);
 
 
