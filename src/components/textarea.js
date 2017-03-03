@@ -24,7 +24,7 @@ class Textarea extends React.Component {
 
     handleClick(e){
         e.preventDefault;
-        this.props.dispatch(runcode(this.state.textarea))
+        this.props.dispatch(runcode(this.state.textarea));
     }
 
     render() {
