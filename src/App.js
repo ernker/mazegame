@@ -17,7 +17,7 @@ class App extends Component {
             <h2>{this.props.app.name}</h2>
           </div>
         </div>
-        <Textarea />  
+        <Textarea />
       </div>         
     );
   }

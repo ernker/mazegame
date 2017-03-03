@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux';
 import {Button, Grid, Row, Col, FormGroup, FormControl, ControlLabel } from 'react-bootstrap'
 import { runcode } from '../action/action'
+import MazeCanvas from './mazecanvas'
 
 class Textarea extends React.Component {
     
@@ -28,8 +29,10 @@ class Textarea extends React.Component {
         return(
             <Grid>
                 <Row>
-                <Col  md={6}>MAZE MAP</Col>
-                
+                <Col  md={6}>
+                    <MazeCanvas>
+                    </MazeCanvas>
+                </Col>
                 <Col  md={6}>
                     <FormGroup controlId="formControlsTextarea">
                         <ControlLabel>Textarea</ControlLabel>
