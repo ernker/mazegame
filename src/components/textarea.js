@@ -38,7 +38,7 @@ class Textarea extends React.Component {
                 <Col  md={6}>Maze MAP</Col>
                 
                 <Col  md={6}>
-                    <CodeMirror value={this.state.textarea} onChange={this.handleChange.bind(this)} options={options} />
+                    <CodeMirror ref='editor' value={this.state.textarea} onChange={this.handleChange.bind(this)} options={options} />
                     <br />
                     <Button bsStyle="primary" onClick={this.handleClick.bind(this)}>RUN</Button>
                 </Col>
