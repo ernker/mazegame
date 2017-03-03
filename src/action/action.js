@@ -1,24 +1,17 @@
-export function runcode(code){
+export function runCodeAsync(code){
     return dispatch => {
         window.runCode(code)
             .then(rez => {
-                dispatch(actionTest(rez))
-            })
-        .catch ( fail => {
-            dispatch(actionFAIL(fail))
-        })
+                dispatch(runCodeAction(rez))
+            });
 
-        }
+    }
 }
 
-export function actionTest(rez){
+function runCodeAction(rez) {
     return {
        type: 'CODE',
        runcode: rez
     };
 
-}
-
-export function actionFAIL(){
-    return {};
 }

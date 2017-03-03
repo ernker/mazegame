@@ -21,7 +21,6 @@ class App extends Component {
             <Col md={12}>
                   <div className="App">
                       <div className="App-header">
-                        <h2>{this.props.app.name}</h2>
                       </div>
                     </div>
             </Col>

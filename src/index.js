@@ -8,7 +8,7 @@ import configureStore from './store/store.js'
 
 
 export let initState = {
-    app: {
+    code: {
       name: 'Maze game',
       runcode: ''
     }

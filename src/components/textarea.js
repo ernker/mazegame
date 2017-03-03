@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux';
 import {Button, Grid, Row, Col, FormGroup, FormControl, ControlLabel } from 'react-bootstrap'
 import CodeMirror from 'react-codemirror'
-import { runcode } from '../action/action'
+import { runCodeAsync } from '../action/action'
 import "../../node_modules/codemirror/lib/codemirror.css"
 import MazeCanvas from './mazecanvas'
 
@@ -24,7 +24,7 @@ class Textarea extends React.Component {
 
     handleClick(e){
         e.preventDefault;
-        this.props.dispatch(runcode(this.state.textarea));
+        this.props.dispatch(runCodeAsync(this.state.textarea));
     }
 
     render() {
@@ -46,7 +46,7 @@ class Textarea extends React.Component {
                     <Button bsStyle="primary" onClick={this.handleClick.bind(this)}>RUN</Button>
                 </Col>
                 <div>
-                    {this.props.app.runcode}
+                    {this.props.code.runcode}
                 </div>
             </div>
         )

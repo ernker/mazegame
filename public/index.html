@@ -59,8 +59,9 @@
                 return Sk.importMainWithBody("<stdin>", false, prog, true);
             });
             return myPromise.then(function(mod) {
+                var ret = output;
                 output = '';
-                return output;
+                return ret;
             },function(err) {
                 console.log(err.toString());
             });
