@@ -4,9 +4,14 @@ var $builtinmodule = function(name)
     
     mod.Maze = Sk.misceval.buildClass(mod, function($gbl, $loc) {
         $loc.__init__ = new Sk.builtin.func(function(self, prop) {
-            self.prop = prop.v;
+            self.prop = prop;
         });
-     
+       
+        $loc.getMaze = new Sk.builtin.func(function(self) {
+            alert(window.Maze.getMaze());
+        });
+
+
         $loc.up = new Sk.builtin.func(function(self) {
             window.Maze.up();
         });
