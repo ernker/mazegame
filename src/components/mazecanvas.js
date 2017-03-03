@@ -8,24 +8,6 @@ class MazeCanvas extends React.Component {
 
         this.drawBlock = this.drawBlock.bind(this);
         this.drawCanvas = this.drawCanvas.bind(this);
-
-        this.state = {
-            mazeArray: [
-                [0, 0, 0, 0, 0, 1, 0, 0, 0, 0],
-                [0, 0, 0, 0, 0, 0, 0, 1, 0, 0],
-                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                [0, 0, 0, 0, 0, 1, 0, 0, 0, 0],
-                [0, 0, 0, 1, 1, 0, 0, 0, 0, 0],
-                [0, 0, 0, 1, 0, 0, 0, 0, 0, 0],
-                [0, 1, 0, 0, 0, 1, 0, 0, 0, 0],
-                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                [0, 0, 0, 0, 1, 0, 0, 1, 0, 0],
-                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-            ],
-            entryCoords: {x: 0, y: 0},
-            exitCoords: {x: 10, y: 10},
-            currentCoords: {x: 0, y: 0}
-        }
     }
 
     drawBlock(ctx, {x, y}) {
@@ -48,16 +30,23 @@ class MazeCanvas extends React.Component {
 
     drawCanvas({ctx, time}) {
         const {width, height} = ctx.canvas;
+        let blockWidth = width / 10;
+        let blockHeight = height / 10;
         ctx.clearRect(0, 0, width, height);
-        //this.drawBlock(ctx, {x: 1, y: 2});
-        //this.drawBlock(ctx, {x: 5, y: 5});
-        //this.drawBlock(ctx, {x: 5, y: 6});
-        //this.drawBlock(ctx, {x: 4, y: 5});
-        this.drawBot(ctx, this.state.currentCoords)
+        ctx.fillStyle = 'black';
+
+        for(let x = 0; x < this.props.mazeArray.length; x++) {
+            for(let y = 0; y < this.props.mazeArray[x].length; y++) {
+                if (this.props.mazeArray[y][x] === 1) {
+                    ctx.fillRect(x * blockWidth, y * blockHeight, blockWidth, blockHeight);
+                }
+            }
+        }
+        this.drawBot(ctx, this.props.currentCoords)
     }
 
     render() {
-        console.log(this.state);
+        console.log(this.props.app);
 
         return <Canvas draw={this.drawCanvas} width={400} height={400} realtime
                        style={{"border": "1px solid #000000"}}/>
@@ -65,7 +54,10 @@ class MazeCanvas extends React.Component {
 }
 
 function mapStatetoProps(state) {
-    return state;
+    return {
+        mazeArray: state.app.mazeArray,
+        currentCoords: state.app.currentCoords
+    };
 }
 
 export default connect(mapStatetoProps)(MazeCanvas);
