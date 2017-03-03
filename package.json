@@ -15,7 +15,8 @@
     "react-thunk": "^1.0.0",
     "redux": "^3.6.0",
     "redux-logger": "^2.8.2",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "skulpt": "^0.11.1"
   },
   "scripts": {
     "start": "react-scripts start",
