@@ -44,7 +44,7 @@ class MazeCanvas extends React.Component {
             }
         }
         this.drawBot(ctx, this.props.currentCoords);
-        ctx.endPath();
+        ctx.closePath();
     }
 
     render() {
