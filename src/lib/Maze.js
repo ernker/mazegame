@@ -50,7 +50,7 @@ export default class Maze {
     };
 
     _checkFree(x, y) {
-        return this._maze[y][x] === 0;
+        return this._maze[y][x] !== 1;
     };
 
     up() {

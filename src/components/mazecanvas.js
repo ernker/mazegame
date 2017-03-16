@@ -13,16 +13,16 @@ class MazeCanvas extends React.Component {
 
     drawBlock(ctx, {x, y}) {
         const {width, height} = ctx.canvas;
-        let blockWidth = width / 10;
-        let blockHeight = height / 10;
+        let blockWidth = width / this.props.mazeArray[0].length;
+        let blockHeight = height / this.props.mazeArray.length;
         ctx.fillStyle = 'black';
         ctx.fillRect(x * blockWidth, y * blockHeight, blockWidth, blockHeight);
     }
 
     drawBot(ctx, {x, y}) {
         const {width, height} = ctx.canvas;
-        let blockWidth = width / 10;
-        let blockHeight = height / 10;
+        let blockWidth = width / this.props.mazeArray[0].length;
+        let blockHeight = height / this.props.mazeArray.length;
         ctx.fillStyle = 'red';
         //ctx.fillRect(x * blockWidth, y * blockHeight, blockWidth, blockHeight);
         ctx.arc(x * blockWidth + blockWidth / 2, y * blockHeight + blockWidth / 2, Math.min(blockWidth * 0.75, blockHeight * 0.75) / 2, 0, 2 * Math.PI);
@@ -31,13 +31,13 @@ class MazeCanvas extends React.Component {
 
     drawCanvas({ctx, time}) {
         const {width, height} = ctx.canvas;
-        let blockWidth = width / 10;
-        let blockHeight = height / 10;
+        let blockWidth = width / this.props.mazeArray[0].length;
+        let blockHeight = height / this.props.mazeArray.length;
         ctx.beginPath();
         ctx.clearRect(0, 0, width, height);
 
-        for(let x = 0; x < this.props.mazeArray.length; x++) {
-            for(let y = 0; y < this.props.mazeArray[x].length; y++) {
+        for(let y = 0; y < this.props.mazeArray.length; y++) {
+            for(let x = 0; x < this.props.mazeArray[y].length; x++) {
                 switch (this.props.mazeArray[y][x]) {
                     case 0: // Empty space
                         ctx.fillStyle = 'white';
@@ -60,7 +60,7 @@ class MazeCanvas extends React.Component {
     }
 
     render() {
-        return <Canvas draw={this.drawCanvas} width={400} height={400} style={{"border": "1px solid #000000"}}/>
+        return <Canvas draw={this.drawCanvas} width={this.props.mazeArray[0].length * 40} height={this.props.mazeArray.length * 40} style={{"border": "5px solid #000000"}}/>
     }
 }
 
