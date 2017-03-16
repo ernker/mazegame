@@ -16,7 +16,6 @@ var $builtinmodule = function(name)
             alert(pos.x, pos.y);
         });
 
-
         $loc.up = new Sk.builtin.func(function(self) {
             window.Maze.up();
         });
@@ -30,9 +29,7 @@ var $builtinmodule = function(name)
        $loc.right = new Sk.builtin.func(function(self) {
             window.Maze.right();
         });
-
     },'Maze', []);
 
-
     return mod;
-}
+};

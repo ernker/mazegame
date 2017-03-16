@@ -1,10 +1,10 @@
-import React from 'react'
-import { connect } from 'react-redux';
-import {Button, Grid, Row, Col, FormGroup, FormControl, ControlLabel } from 'react-bootstrap'
-import CodeMirror from 'react-codemirror'
-import { runCodeAsync, actionMove } from '../action/action'
-import "../../node_modules/codemirror/lib/codemirror.css"
-import MazeCanvas from './mazecanvas'
+import React from "react";
+import {connect} from "react-redux";
+import {Button, Col} from "react-bootstrap";
+import CodeMirror from "react-codemirror";
+import {runCodeAsync, actionMove} from "../action/action";
+import "../../node_modules/codemirror/lib/codemirror.css";
+import MazeCanvas from "./mazecanvas";
 
 class Textarea extends React.Component {
     
@@ -17,7 +17,7 @@ class Textarea extends React.Component {
         
         let _this = this;
 
-        window.Maze.dispatch = function(x, y) {
+        window.Maze.dispatch = (x, y) => {
             console.log('Dispatcher');
             _this.props.dispatch(actionMove({x: x, y: y}))
         } 

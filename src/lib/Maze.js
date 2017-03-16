@@ -1,98 +1,94 @@
-
 export default class Maze {
-    constructor() {
-        this.curPos = this.getInitPosition();
-
-        this._maze = [
-            [0, 0, 0, 0, 0, 1, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 1, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 1, 0, 0, 0, 0],
-            [0, 0, 0, 1, 1, 0, 0, 0, 0, 0],
-            [0, 0, 0, 1, 0, 0, 0, 0, 0, 0],
-            [0, 1, 0, 0, 0, 1, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 1, 0, 0, 1, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-        ];
-    }
+    constructor(currentCoords, mazeArray) {
+        this._maze = mazeArray;
+        this._curPos = currentCoords;
+    };
 
     getMaze() {
         return this._maze;
-    }
-
-    getInitPosition() {
-        return {x: 0, y: 0};
-    }
+    };
 
     getExitPosition() {
-        return {x: 10, y: 10};
-    }
+        let coords = {x: -1, y: -1};
+
+        for (let x = 0; x < this._maze.length; x++) {
+            for (let y = 0; y < this._maze[x].length; y++) {
+                if (this._maze[y][x] === 3) {
+                    coords = {x: x, y: y};
+                    break;
+                }
+            }
+        }
+
+        return coords;
+    };
 
     getCurrentPosition() {
-        return this.curPos;
-    }
+        return this._curPos;
+    };
 
-    setCurrentPosition(x, y) {
-        if(this.checkFree(x,y)) {
-            this.curPos = {x: x, y: y};
+    _setCurrentPosition(x, y) {
+        if (this.checkFree(x, y)) {
+            this._curPos = {x: x, y: y};
             window.Maze.dispatch(x, y);
         }
 
-        return this.curPos;
-    }
-    checkInMaze(x,y) {
-        return x in this._maze && y in this._maze[x];
-    }
+        return this._curPos;
+    };
+
+    checkInMaze(x, y) {
+        return y in this._maze && x in this._maze[y];
+    };
+
     checkFree(x, y) {
-        return this._maze[x][y] === 0;
-    }
+        return this._maze[y][x] === 0;
+    };
 
     up() {
-        let pos = this.getCurrentPosition();
+        let pos = this._curPos;
 
         pos.y = pos.y - 1;
 
-        if(this.checkInMaze(pos.x, pos.y) && this.checkFree(pos.x, pos.y)) {
-            this.setCurrentPosition(pos.x, pos.y);
+        if (this.checkInMaze(pos.x, pos.y) && this.checkFree(pos.x, pos.y)) {
+            this._setCurrentPosition(pos.x, pos.y);
         }
 
-        return this.curPos;
-    }
+        return this._curPos;
+    };
 
     down() {
-        let pos = this.getCurrentPosition();
+        let pos = this._curPos;
 
         pos.y = pos.y + 1;
 
-        if(this.checkInMaze(pos.x, pos.y) && this.checkFree(pos.x, pos.y)) {
-            this.setCurrentPosition(pos.x, pos.y);
+        if (this.checkInMaze(pos.x, pos.y) && this.checkFree(pos.x, pos.y)) {
+            this._setCurrentPosition(pos.x, pos.y);
         }
 
-        return this.curPos;
-    }
-    
+        return this._curPos;
+    };
+
     left() {
-        let pos = this.getCurrentPosition();
+        let pos = this._curPos;
 
         pos.x = pos.x - 1;
 
-        if(this.checkInMaze(pos.x, pos.y) && this.checkFree(pos.x, pos.y)) {
-            this.setCurrentPosition(pos.x, pos.y);
+        if (this.checkInMaze(pos.x, pos.y) && this.checkFree(pos.x, pos.y)) {
+            this._setCurrentPosition(pos.x, pos.y);
         }
 
-        return this.curPos;
-    }
+        return this._curPos;
+    };
 
     right() {
-        let pos = this.getCurrentPosition();
+        let pos = this._curPos;
 
         pos.x = pos.x + 1;
 
-        if(this.checkInMaze(pos.x, pos.y) && this.checkFree(pos.x, pos.y)) {
-            this.setCurrentPosition(pos.x, pos.y);
+        if (this.checkInMaze(pos.x, pos.y) && this.checkFree(pos.x, pos.y)) {
+            this._setCurrentPosition(pos.x, pos.y);
         }
 
-        return this.curPos;
-    }
-}
+        return this._curPos;
+    };
+};
