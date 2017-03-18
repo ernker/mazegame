@@ -2,13 +2,14 @@ import React from "react";
 import {connect} from "react-redux";
 import {Button, Col} from "react-bootstrap";
 import CodeMirror from "react-codemirror";
+import "codemirror/mode/python/python";
 import {runCodeAsync} from "../action/action";
 import "../../node_modules/codemirror/lib/codemirror.css";
 import MazeCanvas from "./mazecanvas";
 
 class Textarea extends React.Component {
-    
-    constructor(){
+
+    constructor() {
         super();
 
         this.state = {
@@ -16,31 +17,37 @@ class Textarea extends React.Component {
         };
     }
 
-    handleChange(code){
+    handleChange(code) {
         this.setState({
-            textarea: code 
+            textarea: code
         })
     }
-    
-    handleClick(e){
+
+    handleClick(e) {
         e.preventDefault();
         this.props.dispatch(runCodeAsync(this.state.textarea));
     }
 
     render() {
         let options = {
-            lineNumbers : true
+            mode: {
+                name: "python",
+                version: 2,
+                singleLineStringErrors: false
+            },
+            lineNumbers: true,
+            indentUnit: 4,
+            matchBrackets: true
         };
 
         return (
-            
-            <div>            
+            <div>
                 <Col md={6}>
                     <MazeCanvas>
                     </MazeCanvas>
                 </Col>
                 <Col md={6}>
-                    <CodeMirror value={this.state.textarea} onChange={this.handleChange.bind(this)} options={options} />
+                    <CodeMirror value={this.state.textarea} onChange={this.handleChange.bind(this)} options={options}/>
                     <br />
                     <Button bsStyle="primary" onClick={this.handleClick.bind(this)}>RUN</Button>
                 </Col>
@@ -52,8 +59,8 @@ class Textarea extends React.Component {
     }
 }
 
-function mapStatetoProps(state){
-  return state.code
+function mapStatetoProps(state) {
+    return state.code
 }
 
 export default connect(mapStatetoProps)(Textarea)
