@@ -48,11 +48,11 @@ export default class Maze {
     };
 
     _checkInMaze(x, y) {
-        return y in this._maze && x in this._maze[y];
+        return x >= 0 && y >= 0 && x < this._maze[y].length && y < this._maze.length
     };
 
     _checkFree(x, y) {
-        return this._maze[y][x] !== 1;
+        return this._checkInMaze(x, y) && this._maze[y][x] !== 1;
     };
 
     up() {
@@ -98,7 +98,7 @@ export default class Maze {
 
         for (let y = - 1; y <= 1; y++) {
             for (let x = - 1; x <= 1; x++) {
-                if (this._curPos.x + x >= 0 && this._curPos.y + y >= 0 && this._curPos.x + x < this._maze[this._curPos.y].length && this._curPos.y + y < this._maze.length) {
+                if (this._checkFree(this._curPos.x + x, this._curPos.y + y)) {
                     neighbours[y + 1][x + 1] = this._maze[this._curPos.y + y][this._curPos.x + x]
                 }
             }
