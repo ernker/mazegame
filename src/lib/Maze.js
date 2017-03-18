@@ -76,15 +76,15 @@ export default class Maze {
     };
 
     move(dx, dy) {
-        let that = this; // Needed to pass new context to setTimeout
+        let that = this; // Needed to pass 'that' as a new context to 'setTimeout'
         setTimeout(function() {
-            const pos = {
+            let coords = {
                 x: that._curPos.x + dx,
                 y: that._curPos.y + dy
             };
 
-            if(that._checkInMaze(pos.x, pos.y) && that._checkFree(pos.x, pos.y)) {
-                that._setCurrentPosition(pos.x, pos.y);
+            if(that._checkInMaze(coords.x, coords.y) && that._checkFree(coords.x, coords.y)) {
+                that._setCurrentPosition(coords.x, coords.y);
             }
         }, this._timeout);
     }
@@ -96,11 +96,14 @@ export default class Maze {
             [1, 1, 1]
         ];
 
-        for (let x = this._curPos.x - 1; x <= this._curPos.x + 1; x++) {
-            for (let y = this._curPos.y - 1; y <= this._curPos.y + 1; y++) {
-                if (x >= 0 || y >= 0 || x < this._maze[y].length || y < this._maze.length) {
+        for (let y = - 1; y <= 1; y++) {
+            for (let x = - 1; x <= 1; x++) {
+                if (this._curPos.x + x >= 0 && this._curPos.y + y >= 0 && this._curPos.x + x < this._maze[this._curPos.y].length && this._curPos.y + y < this._maze.length) {
+                    neighbours[y + 1][x + 1] = this._maze[this._curPos.y + y][this._curPos.x + x]
                 }
             }
         }
+
+        return neighbours;
     };
 };
