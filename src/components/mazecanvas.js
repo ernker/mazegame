@@ -51,6 +51,8 @@ class MazeCanvas extends React.Component {
                     case 3: // Exit point
                         ctx.fillStyle = 'green';
                         break;
+                    default:
+                        ctx.fillStyle = 'white';
                 }
                 ctx.fillRect(x * blockWidth, y * blockHeight, blockWidth, blockHeight);
             }

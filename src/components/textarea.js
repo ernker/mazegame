@@ -23,15 +23,15 @@ class Textarea extends React.Component {
     }
     
     handleClick(e){
-        e.preventDefault;
+        e.preventDefault();
         this.props.dispatch(runCodeAsync(this.state.textarea));
     }
 
     render() {
-
         let options = {
             lineNumbers : true
-        }
+        };
+
         return (
             
             <div>            
