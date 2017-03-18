@@ -56,26 +56,26 @@ export default class Maze {
     };
 
     up() {
-        this.move(0, -1);
+        this._move(0, -1);
         return this._curPos;
     };
 
     down() {
-        this.move(0, 1);
+        this._move(0, 1);
         return this._curPos;
     };
 
     left() {
-        this.move(-1, 0);
+        this._move(-1, 0);
         return this._curPos;
     };
 
     right() {
-        this.move(1, 0);
+        this._move(1, 0);
         return this._curPos;
     };
 
-    move(dx, dy) {
+    _move(dx, dy) {
         let that = this; // Needed to pass 'that' as a new context to 'setTimeout'
         setTimeout(function() {
             let coords = {
