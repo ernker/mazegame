@@ -76,17 +76,14 @@ export default class Maze {
     };
 
     _move(dx, dy) {
-        let that = this; // Needed to pass 'that' as a new context to 'setTimeout'
-        setTimeout(function() {
-            let coords = {
-                x: that._curPos.x + dx,
-                y: that._curPos.y + dy
-            };
+        let newCoords = {
+            x: this._curPos.x + dx,
+            y: this._curPos.y + dy
+        };
 
-            if(that._checkInMaze(coords.x, coords.y) && that._checkFree(coords.x, coords.y)) {
-                that._setCurrentPosition(coords.x, coords.y);
-            }
-        }, this._timeout);
+        if(this._checkInMaze(newCoords.x, newCoords.y) && this._checkFree(newCoords.x, newCoords.y)) {
+            this._setCurrentPosition(newCoords.x, newCoords.y);
+        }
     }
 
     getNeighbours() {

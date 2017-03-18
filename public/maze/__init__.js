@@ -7,39 +7,39 @@ let $builtinmodule = function (name) {
         });
 
         $loc.get_entry_position = new Sk.builtin.func(function (self) {
-            return window.Maze.getEntryPosition();
+            return Sk.ffi.remapToPy(window.Maze.getEntryPosition());
         });
 
         $loc.get_exit_position = new Sk.builtin.func(function (self) {
-            return window.Maze.getExitPosition();
+            return Sk.ffi.remapToPy(window.Maze.getExitPosition());
         });
 
         $loc.get_maze = new Sk.builtin.func(function (self) {
-            return window.Maze.getMaze();
+            return Sk.ffi.remapToPy(window.Maze.getMaze());
         });
 
         $loc.get_current_position = new Sk.builtin.func(function (self) {
-            return window.Maze.getCurrentPosition();
+            return Sk.ffi.remapToPy(window.Maze.getCurrentPosition());
         });
 
         $loc.get_neighbours = new Sk.builtin.func(function (self) {
-            return window.Maze.getNeighbours();
+            return Sk.ffi.remapToPy(window.Maze.getNeighbours());
         });
 
         $loc.up = new Sk.builtin.func(function (self) {
-            return window.Maze.up();
+            return Sk.ffi.remapToPy(window.Maze.up());
         });
 
         $loc.down = new Sk.builtin.func(function (self) {
-            return window.Maze.down();
+            return Sk.ffi.remapToPy(window.Maze.down());
         });
 
         $loc.left = new Sk.builtin.func(function (self) {
-            return window.Maze.left();
+            return Sk.ffi.remapToPy(window.Maze.left());
         });
 
         $loc.right = new Sk.builtin.func(function (self) {
-            return window.Maze.right();
+            return Sk.ffi.remapToPy(window.Maze.right());
         });
     }, 'Maze', []);
 

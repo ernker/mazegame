@@ -5,7 +5,7 @@ import "./index.css";
 import {Provider} from "react-redux";
 import configureStore from "./store/store.js";
 
-export let initState = {
+let initState = {
     code: {
       runcode: ''
     },
