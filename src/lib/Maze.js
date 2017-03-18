@@ -1,4 +1,6 @@
 export default class Maze {
+    _timeout = 500;
+
     constructor(currentCoords, mazeArray, moveBot) {
         this._maze = mazeArray;
         this._curPos = currentCoords;
@@ -54,44 +56,49 @@ export default class Maze {
     };
 
     up() {
-        if (this._checkInMaze(this._curPos.x, this._curPos.y - 1) && this._checkFree(this._curPos.x, this._curPos.y - 1)) {
-            this._setCurrentPosition(this._curPos.x, this._curPos.y - 1);
-        }
-
+        this.move(0, -1);
         return this._curPos;
     };
 
     down() {
-        if (this._checkInMaze(this._curPos.x, this._curPos.y + 1) && this._checkFree(this._curPos.x, this._curPos.y + 1)) {
-            this._setCurrentPosition(this._curPos.x, this._curPos.y + 1);
-        }
-
+        this.move(0, 1);
         return this._curPos;
     };
 
     left() {
-        if (this._checkInMaze(this._curPos.x - 1, this._curPos.y) && this._checkFree(this._curPos.x - 1, this._curPos.y)) {
-            this._setCurrentPosition(this._curPos.x - 1, this._curPos.y);
-        }
-
+        this.move(-1, 0);
         return this._curPos;
     };
 
     right() {
-        if (this._checkInMaze(this._curPos.x + 1, this._curPos.y) && this._checkFree(this._curPos.x + 1, this._curPos.y)) {
-            this._setCurrentPosition(this._curPos.x + 1, this._curPos.y);
-        }
-
+        this.move(1, 0);
         return this._curPos;
     };
 
+    move(dx, dy) {
+        let that = this; // Needed to pass new context to setTimeout
+        setTimeout(function() {
+            const pos = {
+                x: that._curPos.x + dx,
+                y: that._curPos.y + dy
+            };
+
+            if(that._checkInMaze(pos.x, pos.y) && that._checkFree(pos.x, pos.y)) {
+                that._setCurrentPosition(pos.x, pos.y);
+            }
+        }, this._timeout);
+    }
+
     getNeighbours() {
-        //let neighbours = int[][]
+        let neighbours = [
+            [1, 1, 1],
+            [1, 1, 1],
+            [1, 1, 1]
+        ];
 
         for (let x = this._curPos.x - 1; x <= this._curPos.x + 1; x++) {
             for (let y = this._curPos.y - 1; y <= this._curPos.y + 1; y++) {
-                if (x < 0 || y < 0 || x >= this._maze[y].length || y >= this._maze.length) {
-                    let value = 1;
+                if (x >= 0 || y >= 0 || x < this._maze[y].length || y < this._maze.length) {
                 }
             }
         }
