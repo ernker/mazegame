@@ -6,7 +6,6 @@ export default class Maze {
     };
 
     reset() {
-        this._timeout = 0;
         this._history = [];
         let entryCoords = this.getEntryPosition();
         this._history.push(entryCoords);
@@ -80,21 +79,15 @@ export default class Maze {
     };
 
     _move(dx, dy) {
-        let that = this;
+        let newCoords = {
+            x: this._curPos.x + dx,
+            y: this._curPos.y + dy
+        };
 
-        setTimeout(() => {
-            let newCoords = {
-                x: that._curPos.x + dx,
-                y: that._curPos.y + dy
-            };
-
-            if (that._checkInMaze(newCoords.x, newCoords.y) && that._checkFree(newCoords.x, newCoords.y)) {
-                that._setCurrentPosition(newCoords.x, newCoords.y);
-            }
-            that._history.push(this._curPos);
-        }, this._timeout);
-
-        this._timeout += 500;
+        if (this._checkInMaze(newCoords.x, newCoords.y) && this._checkFree(newCoords.x, newCoords.y)) {
+            this._setCurrentPosition(newCoords.x, newCoords.y);
+        }
+        this._history.push(this._curPos);
     }
 
     getNeighbours() {
@@ -120,7 +113,7 @@ export default class Maze {
         return this._curPos.x === exitCoords.x && this._curPos.y === exitCoords.y;
     };
 
-    _replay() {
+    replay() {
         this._timeout = 0;
         for (let i = 0; i < this._history.length; i++) {
             let that = this;
