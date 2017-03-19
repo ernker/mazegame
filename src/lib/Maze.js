@@ -1,14 +1,17 @@
 export default class Maze {
-    _history = [];
-
     constructor(currentCoords, mazeArray, moveBot) {
         this._curPos = currentCoords;
         this._maze = mazeArray;
         this._moveBot = moveBot;
+
+        this.reset();
     };
 
-    _goToEntryCoords() {
+    reset() {
+        this._timeout = 0;
+        this._history = [];
         let entryCoords = this.getEntryPosition();
+        this._history.push(entryCoords);
         this._setCurrentPosition(entryCoords.x, entryCoords.y);
     }
 
@@ -48,9 +51,6 @@ export default class Maze {
             this._curPos = {x: x, y: y};
             this._moveBot(x, y);
         }
-
-        this._history.push(this._curPos);
-        return this._curPos;
     };
 
     _checkInMaze(x, y) {
@@ -82,14 +82,21 @@ export default class Maze {
     };
 
     _move(dx, dy) {
-        let newCoords = {
-            x: this._curPos.x + dx,
-            y: this._curPos.y + dy
-        };
+        let that = this;
 
-        if (this._checkInMaze(newCoords.x, newCoords.y) && this._checkFree(newCoords.x, newCoords.y)) {
-            this._setCurrentPosition(newCoords.x, newCoords.y);
-        }
+        setTimeout(() => {
+            let newCoords = {
+                x: that._curPos.x + dx,
+                y: that._curPos.y + dy
+            };
+
+            if (that._checkInMaze(newCoords.x, newCoords.y) && that._checkFree(newCoords.x, newCoords.y)) {
+                that._setCurrentPosition(newCoords.x, newCoords.y);
+            }
+            that._history.push(this._curPos);
+        }, this._timeout);
+
+        this._timeout += 500;
     }
 
     getNeighbours() {
@@ -116,11 +123,13 @@ export default class Maze {
     };
 
     _replay() {
-        let that = this;
+        this._timeout = 0;
         for (let i = 0; i < this._history.length; i++) {
+            let that = this;
             setTimeout(function () {
                 that._setCurrentPosition(that._history[i].x, that._history[i].y);
-            }, 500);
+            }, this._timeout);
+            this._timeout += 500;
         }
-    }
+    };
 };
