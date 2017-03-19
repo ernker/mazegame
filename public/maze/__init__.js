@@ -4,6 +4,7 @@ let $builtinmodule = function (name) {
     mod.Maze = Sk.misceval.buildClass(mod, function ($gbl, $loc) {
         $loc.__init__ = new Sk.builtin.func(function (self, prop) {
             self.prop = prop;
+            window.Maze._goToEntryCoords();
         });
 
         $loc.get_entry_position = new Sk.builtin.func(function (self) {
@@ -40,6 +41,10 @@ let $builtinmodule = function (name) {
 
         $loc.right = new Sk.builtin.func(function (self) {
             return Sk.ffi.remapToPy(window.Maze.right());
+        });
+
+        $loc.is_maze_solved = new Sk.builtin.func(function (self) {
+            return Sk.ffi.remapToPy(window.Maze.isMazeSolved());
         });
     }, 'Maze', []);
 

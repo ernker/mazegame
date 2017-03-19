@@ -7,6 +7,11 @@ export default class Maze {
         this._moveBot = moveBot;
     };
 
+    _goToEntryCoords() {
+        let entryCoords = this.getEntryPosition();
+        this._setCurrentPosition(entryCoords.x, entryCoords.y);
+    }
+
     getMaze() {
         return this._maze;
     };
@@ -102,5 +107,9 @@ export default class Maze {
         }
 
         return neighbours;
+    };
+
+    isMazeSolved(){
+        return this._maze[this._curPos.y][this._curPos.x] === 3;
     };
 };
