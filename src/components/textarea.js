@@ -23,9 +23,14 @@ class Textarea extends React.Component {
         })
     }
 
-    handleClick(e) {
+    handleRunClick(e) {
         e.preventDefault();
         this.props.dispatch(actionRunCodeAsync(this.state.textarea));
+    }
+
+    handleReplayClick(e) {
+        e.preventDefault();
+        window.Maze.replay();
     }
 
     render() {
@@ -49,7 +54,9 @@ class Textarea extends React.Component {
                 <Col md={6}>
                     <CodeMirror value={this.state.textarea} onChange={this.handleChange.bind(this)} options={options}/>
                     <br />
-                    <Button bsStyle="primary" onClick={this.handleClick.bind(this)}>RUN</Button>
+                    <Button bsStyle="primary" onClick={this.handleRunClick.bind(this)}>RUN</Button>
+                    <span> </span>
+                    <Button bsStyle="primary" onClick={this.handleReplayClick.bind(this)}>REPLAY</Button>
                 </Col>
                 <div>
                     {this.props.runcode}
