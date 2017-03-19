@@ -3,8 +3,6 @@ export default class Maze {
         this._curPos = currentCoords;
         this._maze = mazeArray;
         this._moveBot = moveBot;
-
-        this.reset();
     };
 
     reset() {
