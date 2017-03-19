@@ -1,9 +1,7 @@
 export default class Maze {
-    _timeout = 500;
-
     constructor(currentCoords, mazeArray, moveBot) {
-        this._maze = mazeArray;
         this._curPos = currentCoords;
+        this._maze = mazeArray;
         this._moveBot = moveBot;
     };
 
