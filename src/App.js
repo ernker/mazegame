@@ -9,7 +9,7 @@ import {actionMove} from "./action/action";
 
 class App extends Component {
     render() {
-        window.Maze = new Maze(this.props.app.currentCoords, this.props.app.mazeArray, (x, y) => {
+        window.Maze = new Maze(this.props.app.currentCoords, this.props.app.maze, (x, y) => {
             this.props.dispatch(actionMove({x: x, y: y}))
         });
 

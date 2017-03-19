@@ -34,9 +34,8 @@
 
 <script>
     function outf(text) {
-        let mypre = document.getElementById("output");
-        mypre.innerHTML = mypre.innerHTML + text + '<br />';
-        console.log(text);
+        let mypre = document.getElementById('output');
+        mypre.innerHTML += text + '<br />';
     }
     function builtinRead(x) {
         if (Sk.builtinFiles === undefined || Sk.builtinFiles["files"][x] === undefined)
@@ -49,6 +48,9 @@
     // configure the output function
     // call Sk.importMainWithBody()
     window.runCode = function (prog) {
+        let mypre = document.getElementById('output');
+        mypre.innerHTML = '';
+
         Sk.externalLibraries = {
             maze: {
                 path: '/maze/__init__.js'
@@ -59,9 +61,13 @@
             return Sk.importMainWithBody("<stdin>", false, prog, true);
         });
         return myPromise.then(function (mod) {
-            console.log('Successfully executed code');
+            let mypre = document.getElementById('output');
+            if (window.Maze.isMazeSolved()) {
+                mypre.innerHTML += 'Maze solved in ' + (window.Maze._history.length - 1) + ' moves.<br />';
+            }
         }, function (err) {
-            console.log(err.toString());
+            let mypre = document.getElementById('output');
+            mypre.innerHTML = err.toString();
         });
     }
 </script>

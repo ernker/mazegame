@@ -59,7 +59,6 @@ class Textarea extends React.Component {
                     <Button bsStyle="primary" onClick={this.handleReplayClick.bind(this)}>REPLAY</Button>
                 </Col>
                 <Col md={6} id="output">
-                    {this.props.runcode}
                 </Col>
             </div>
         )

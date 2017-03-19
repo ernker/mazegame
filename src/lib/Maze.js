@@ -1,7 +1,7 @@
 export default class Maze {
-    constructor(currentCoords, mazeArray, moveBot) {
+    constructor(currentCoords, maze, moveBot) {
         this._curPos = currentCoords;
-        this._maze = mazeArray;
+        this._maze = maze;
         this._moveBot = moveBot;
     };
 
@@ -51,7 +51,7 @@ export default class Maze {
     };
 
     _checkInMaze(x, y) {
-        return x >= 0 && y >= 0 && x < this._maze[y].length && y < this._maze.length
+        return x >= 0 && y >= 0 && y < this._maze.length && x < this._maze[y].length
     };
 
     _checkFree(x, y) {
