@@ -1,4 +1,6 @@
 export default class Maze {
+    _history = [];
+
     constructor(currentCoords, mazeArray, moveBot) {
         this._curPos = currentCoords;
         this._maze = mazeArray;
@@ -47,6 +49,7 @@ export default class Maze {
             this._moveBot(x, y);
         }
 
+        this._history.push(this._curPos);
         return this._curPos;
     };
 
@@ -84,7 +87,7 @@ export default class Maze {
             y: this._curPos.y + dy
         };
 
-        if(this._checkInMaze(newCoords.x, newCoords.y) && this._checkFree(newCoords.x, newCoords.y)) {
+        if (this._checkInMaze(newCoords.x, newCoords.y) && this._checkFree(newCoords.x, newCoords.y)) {
             this._setCurrentPosition(newCoords.x, newCoords.y);
         }
     }
@@ -96,8 +99,8 @@ export default class Maze {
             [1, 1, 1]
         ];
 
-        for (let y = - 1; y <= 1; y++) {
-            for (let x = - 1; x <= 1; x++) {
+        for (let y = -1; y <= 1; y++) {
+            for (let x = -1; x <= 1; x++) {
                 if (this._checkFree(this._curPos.x + x, this._curPos.y + y)) {
                     neighbours[y + 1][x + 1] = this._maze[this._curPos.y + y][this._curPos.x + x]
                 }
@@ -107,7 +110,17 @@ export default class Maze {
         return neighbours;
     };
 
-    isMazeSolved(){
-        return this._maze[this._curPos.y][this._curPos.x] === 3;
+    isMazeSolved() {
+        let exitCoords = this.getExitPosition();
+        return this._curPos.x === exitCoords.x && this._curPos.y === exitCoords.y;
     };
+
+    _replay() {
+        let that = this;
+        for (let i = 0; i < this._history.length; i++) {
+            setTimeout(function () {
+                that._setCurrentPosition(that._history[i].x, that._history[i].y);
+            }, 500);
+        }
+    }
 };
