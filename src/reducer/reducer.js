@@ -1,24 +1,17 @@
-import { initState } from '../index.js'
-
-export default function reducer(state=initState, action) {
+export default function reducer(state, action) {
     let newState = Object.assign({}, state);
 
-    switch(action.type){
+    switch (action.type) {
         case 'CODE':
-            console.log('Reduced: ', action);
-            console.log('State: ', newState);
             newState.code.runcode = action.runcode;
-
-            return newState;
-
-        case 'LOGOUT':
-            return initState;
+            break;
 
         case 'MOVE':
             newState.app.currentCoords = action.moveToCoords;
-            return newState;
+            break;
 
         default:
-            return newState
     }
-}
+
+    return newState;
+};

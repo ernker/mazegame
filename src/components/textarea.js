@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import {Button, Col} from "react-bootstrap";
 import CodeMirror from "react-codemirror";
 import "codemirror/mode/python/python";
-import {runCodeAsync} from "../action/action";
+import {actionRunCodeAsync} from "../action/action";
 import "../../node_modules/codemirror/lib/codemirror.css";
 import MazeCanvas from "./mazecanvas";
 
@@ -25,7 +25,7 @@ class Textarea extends React.Component {
 
     handleClick(e) {
         e.preventDefault();
-        this.props.dispatch(runCodeAsync(this.state.textarea));
+        this.props.dispatch(actionRunCodeAsync(this.state.textarea));
     }
 
     render() {
