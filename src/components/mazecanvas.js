@@ -1,6 +1,8 @@
-import React from 'react'
-import {connect} from 'react-redux';
-import Canvas from 'react-canvas-component'
+import React from "react";
+import {connect} from "react-redux";
+import Canvas from "react-canvas-component";
+import Maze from "../lib/Maze";
+import {actionMove, actionReplay, actionReset} from "../action/action";
 
 class MazeCanvas extends React.Component {
     constructor() {
@@ -62,6 +64,14 @@ class MazeCanvas extends React.Component {
     }
 
     render() {
+        window.Maze = new Maze(this.props.currentCoords, this.props.maze, this.props.history, (x, y) => {
+            this.props.dispatch(actionMove({x: x, y: y}))
+        }, (x, y) => {
+            this.props.dispatch(actionReplay({x: x, y: y}));
+        }, () => {
+            this.props.dispatch(actionReset());
+        });
+
         return <Canvas draw={this.drawCanvas} width={this.props.maze[0].length * 40} height={this.props.maze.length * 40} style={{"border": "5px solid #000000"}}/>
     }
 }
@@ -69,7 +79,8 @@ class MazeCanvas extends React.Component {
 function mapStatetoProps(state) {
     return {
         maze: state.app.maze,
-        currentCoords: state.app.currentCoords
+        currentCoords: state.app.currentCoords,
+        history: state.app.history
     };
 }
 

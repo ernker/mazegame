@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import {Button, Col} from "react-bootstrap";
 import CodeMirror from "react-codemirror";
 import "codemirror/mode/python/python";
-import {actionRunCodeAsync} from "../action/action";
+import {actionRunCodeAsync, actionNextMaze} from "../action/action";
 import "../../node_modules/codemirror/lib/codemirror.css";
 import MazeCanvas from "./mazecanvas";
 
@@ -33,6 +33,11 @@ class Textarea extends React.Component {
         window.Maze.replay();
     }
 
+    handleNextMazeClick(e) {
+        e.preventDefault();
+        this.props.dispatch(actionNextMaze());
+    }
+
     render() {
         let options = {
             mode: {
@@ -57,6 +62,8 @@ class Textarea extends React.Component {
                     <Button bsStyle="primary" onClick={this.handleRunClick.bind(this)}>RUN</Button>
                     <span> </span>
                     <Button bsStyle="primary" onClick={this.handleReplayClick.bind(this)}>REPLAY</Button>
+                    <span> </span>
+                    <Button bsStyle="primary" onClick={this.handleNextMazeClick.bind(this)}>NEXT MAZE</Button>
                 </Col>
                 <Col md={6} id="output">
                 </Col>

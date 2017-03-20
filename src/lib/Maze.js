@@ -1,16 +1,13 @@
 export default class Maze {
-    constructor(currentCoords, maze, moveBot) {
+    constructor(currentCoords, maze, history, moveBot, replay, reset) {
         this._curPos = currentCoords;
         this._maze = maze;
-        this._moveBot = moveBot;
-    };
+        this._history = history;
 
-    reset() {
-        this._history = [];
-        let entryCoords = this.getEntryPosition();
-        this._history.push(entryCoords);
-        this._setCurrentPosition(entryCoords.x, entryCoords.y);
-    }
+        this._moveBot = moveBot;
+        this._replay = replay;
+        this.reset = reset;
+    };
 
     getMaze() {
         return this._maze;
@@ -45,8 +42,13 @@ export default class Maze {
 
     _setCurrentPosition(x, y) {
         if (this._checkFree(x, y)) {
-            this._curPos = {x: x, y: y};
             this._moveBot(x, y);
+        }
+    };
+
+    _replayPosition(x, y) {
+        if (this._checkFree(x, y)) {
+            this._replay(x, y);
         }
     };
 
@@ -87,7 +89,6 @@ export default class Maze {
         if (this._checkInMaze(newCoords.x, newCoords.y) && this._checkFree(newCoords.x, newCoords.y)) {
             this._setCurrentPosition(newCoords.x, newCoords.y);
         }
-        this._history.push(this._curPos);
     }
 
     getNeighbours() {
@@ -118,7 +119,7 @@ export default class Maze {
         for (let i = 0; i < this._history.length; i++) {
             let that = this;
             setTimeout(function () {
-                that._setCurrentPosition(that._history[i].x, that._history[i].y);
+                that._replayPosition(that._history[i].x, that._history[i].y);
             }, this._timeout);
             this._timeout += 500;
         }

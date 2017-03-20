@@ -95,11 +95,13 @@ const initState = {
                 [0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0],
                 [0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 3]]],
         maze: [],
-        currentCoords: {x: 0, y: 0}
+        mazeIndex: 1,
+        currentCoords: {x: 0, y: 0},
+        history: []
     }
 };
 
-initState.app.maze = initState.app.mazes[1];
+initState.app.maze = initState.app.mazes[initState.app.mazeIndex];
 
 let store = configureStore(initState);
 
