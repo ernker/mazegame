@@ -38,8 +38,8 @@ class MazeCanvas extends React.Component {
         ctx.beginPath();
         ctx.clearRect(0, 0, width, height);
 
-        for(let y = 0; y < this.props.maze.length; y++) {
-            for(let x = 0; x < this.props.maze[y].length; x++) {
+        for (let y = 0; y < this.props.maze.length; y++) {
+            for (let x = 0; x < this.props.maze[y].length; x++) {
                 switch (this.props.maze[y][x]) {
                     case 0: // Empty space
                         ctx.fillStyle = 'white';
@@ -72,15 +72,16 @@ class MazeCanvas extends React.Component {
             this.props.dispatch(actionReset());
         });
 
-        return <Canvas draw={this.drawCanvas} width={this.props.maze[0].length * 40} height={this.props.maze.length * 40} style={{"border": "5px solid #000000"}}/>
+        return <Canvas draw={this.drawCanvas} width={this.props.maze[0].length * 40}
+                       height={this.props.maze.length * 40} style={{"border": "5px solid #000000"}}/>
     }
 }
 
 function mapStatetoProps(state) {
     return {
-        maze: state.app.maze,
-        currentCoords: state.app.currentCoords,
-        history: state.app.history
+        maze: state.maze,
+        currentCoords: state.currentCoords,
+        history: state.history
     };
 }
 

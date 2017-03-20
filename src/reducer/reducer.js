@@ -1,43 +1,44 @@
-export default function reducer(state, action) {
+import init from "../index";
+
+export default function reducer(state=init(), action) {
     let newState = Object.assign({}, state);
 
     switch (action.type) {
         case 'CODE':
-            newState.code.runcode = action.runcode;
-            break;
+            newState.code = action.runcode;
+            return newState;
 
         case 'MOVE':
-            newState.app.currentCoords = action.moveToCoords;
-            newState.app.history.push(action.moveToCoords);
-            break;
+            newState.currentCoords = action.moveToCoords;
+            newState.history.push(action.moveToCoords);
+            return newState;
 
         case 'REPLAY':
-            newState.app.currentCoords = action.moveToCoords;
-            break;
+            newState.currentCoords = action.moveToCoords;
+            return newState;
 
         case 'NEXTMAZE':
-            if (newState.app.mazeIndex < newState.app.mazes.length - 1) {
-                newState.app.mazeIndex += 1;
+            if (newState.mazeIndex < newState.mazes.length - 1) {
+                newState.mazeIndex += 1;
             }
             else {
-                newState.app.mazeIndex = 0;
+                newState.mazeIndex = 0;
             }
-            newState.app.maze = newState.app.mazes[newState.app.mazeIndex];
+            newState.maze = newState.mazes[newState.mazeIndex];
 
-            newState.app.history = [];
-            newState.app.currentCoords = getEntryPosition(newState.app.maze);
-            newState.app.history.push(newState.app.currentCoords);
-            break;
+            newState.history = [];
+            newState.currentCoords = getEntryPosition(newState.maze);
+            newState.history.push(newState.currentCoords);
+            return newState;
 
         case 'RESET':
-            newState.app.history = [];
-            newState.app.currentCoords = getEntryPosition(newState.app.maze);
-            newState.app.history.push(newState.app.currentCoords);
-            break;
+            newState.history = [];
+            newState.currentCoords = getEntryPosition(newState.maze);
+            newState.history.push(newState.currentCoords);
+            return newState;
 
         default:
     }
-
     return newState;
 };
 

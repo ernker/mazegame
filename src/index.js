@@ -5,12 +5,10 @@ import "./index.css";
 import {Provider} from "react-redux";
 import configureStore from "./store/store.js";
 
-const initState = {
-    code: {
-        runcode: ''
-    },
-    app: {
-        name: 'Maze game',
+export default function init() {
+    let initState = {
+        code: '',
+        app_name: 'Maze game',
         mazes: [[[2, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0],
             [0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0],
             [0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0],
@@ -98,12 +96,12 @@ const initState = {
         mazeIndex: 1,
         currentCoords: {x: 0, y: 0},
         history: []
-    }
+    };
+    initState.maze = initState.mazes[initState.mazeIndex];
+    return initState;
 };
 
-initState.app.maze = initState.app.mazes[initState.app.mazeIndex];
-
-let store = configureStore(initState);
+let store = configureStore(init());
 
 ReactDOM.render(
     (

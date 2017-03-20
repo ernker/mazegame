@@ -73,7 +73,7 @@ class Textarea extends React.Component {
 }
 
 function mapStatetoProps(state) {
-    return state.code
+    return { code: state.code };
 }
 
 export default connect(mapStatetoProps)(Textarea)

@@ -1,6 +1,6 @@
 export default class Maze {
     constructor(currentCoords, maze, history, moveBot, replay, reset) {
-        this._curPos = currentCoords;
+        this._currentCoords = currentCoords;
         this._maze = maze;
         this._history = history;
 
@@ -37,7 +37,7 @@ export default class Maze {
     };
 
     getCurrentPosition() {
-        return this._curPos;
+        return this._currentCoords;
     };
 
     _setCurrentPosition(x, y) {
@@ -62,28 +62,28 @@ export default class Maze {
 
     up() {
         this._move(0, -1);
-        return this._curPos;
+        return this._currentCoords;
     };
 
     down() {
         this._move(0, 1);
-        return this._curPos;
+        return this._currentCoords;
     };
 
     left() {
         this._move(-1, 0);
-        return this._curPos;
+        return this._currentCoords;
     };
 
     right() {
         this._move(1, 0);
-        return this._curPos;
+        return this._currentCoords;
     };
 
     _move(dx, dy) {
         let newCoords = {
-            x: this._curPos.x + dx,
-            y: this._curPos.y + dy
+            x: this._currentCoords.x + dx,
+            y: this._currentCoords.y + dy
         };
 
         if (this._checkInMaze(newCoords.x, newCoords.y) && this._checkFree(newCoords.x, newCoords.y)) {
@@ -100,8 +100,8 @@ export default class Maze {
 
         for (let y = -1; y <= 1; y++) {
             for (let x = -1; x <= 1; x++) {
-                if (this._checkFree(this._curPos.x + x, this._curPos.y + y)) {
-                    neighbours[y + 1][x + 1] = this._maze[this._curPos.y + y][this._curPos.x + x]
+                if (this._checkFree(this._currentCoords.x + x, this._currentCoords.y + y)) {
+                    neighbours[y + 1][x + 1] = this._maze[this._currentCoords.y + y][this._currentCoords.x + x]
                 }
             }
         }
@@ -111,7 +111,7 @@ export default class Maze {
 
     isMazeSolved() {
         let exitCoords = this.getExitPosition();
-        return this._curPos.x === exitCoords.x && this._curPos.y === exitCoords.y;
+        return this._currentCoords.x === exitCoords.x && this._currentCoords.y === exitCoords.y;
     };
 
     replay() {
