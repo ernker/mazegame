@@ -1,44 +1,59 @@
 import init from "../index";
 
-export default function reducer(state=init(), action) {
-    let newState = Object.assign({}, state);
+export default function reducer(state = init(), action) {
+    //let newState = Object.assign({}, state);
+    let newState = {};
 
     switch (action.type) {
-        case 'CODE':
-            newState.code = action.runcode;
-            return newState;
-
         case 'MOVE':
-            newState.currentCoords = action.moveToCoords;
-            newState.history.push(action.moveToCoords);
-            return newState;
+            newState.maze = [...state.maze];
+            newState.mazes = [...state.mazes];
+            newState.mazeIndex = state.mazeIndex;
+            let newCoordsMove = action.moveToCoords;
+            newState.currentCoords = newCoordsMove;
+            newState.history = [...state.history, newCoordsMove];
+            break;
 
         case 'REPLAY':
+            newState.maze = [...state.maze];
+            newState.mazes = [...state.mazes];
+            newState.mazeIndex = state.mazeIndex;
             newState.currentCoords = action.moveToCoords;
-            return newState;
+            newState.history = [...state.history]
+            break;
 
         case 'NEXTMAZE':
-            if (newState.mazeIndex < newState.mazes.length - 1) {
-                newState.mazeIndex += 1;
+            if (state.mazeIndex < state.mazes.length - 1) {
+                newState.mazeIndex = state.mazeIndex + 1;
             }
             else {
                 newState.mazeIndex = 0;
             }
-            newState.maze = newState.mazes[newState.mazeIndex];
-
-            newState.history = [];
-            newState.currentCoords = getEntryPosition(newState.maze);
-            newState.history.push(newState.currentCoords);
-            return newState;
+            newState.maze = [...state.mazes[newState.mazeIndex]];
+            newState.mazes = [...state.mazes];
+            let entryPositionNextMaze = getEntryPosition(newState.maze);
+            newState.currentCoords = entryPositionNextMaze;
+            newState.history = [entryPositionNextMaze];
+            break;
 
         case 'RESET':
-            newState.history = [];
-            newState.currentCoords = getEntryPosition(newState.maze);
-            newState.history.push(newState.currentCoords);
-            return newState;
+            newState.maze = [...state.maze];
+            newState.mazes = [...state.mazes];
+            newState.mazeIndex = state.mazeIndex;
+            let entryPositionReset = getEntryPosition(newState.maze);
+            newState.currentCoords = entryPositionReset;
+            newState.history = [entryPositionReset];
+            break;
 
         default:
+            newState.maze = [...state.maze];
+            newState.mazes = [...state.mazes];
+            newState.mazeIndex = state.mazeIndex;
+            let entryPositionDefault = getEntryPosition(newState.maze);
+            newState.currentCoords = entryPositionDefault;
+            newState.history = [entryPositionDefault];
     }
+
     return newState;
 };
 

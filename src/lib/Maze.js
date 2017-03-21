@@ -1,24 +1,16 @@
 export default class Maze {
-    constructor(currentCoords, maze, history, moveBot, replay, reset) {
-        this._currentCoords = currentCoords;
-        this._maze = maze;
-        this._history = history;
-
-        this._moveBot = moveBot;
-        this._replay = replay;
-        this.reset = reset;
-    };
+    timeout = 0;
 
     getMaze() {
-        return this._maze;
+        return this.maze;
     };
 
     _getPortalPosition(portalType) {
         let coords = {x: -1, y: -1};
 
-        for (let x = 0; x < this._maze.length; x++) {
-            for (let y = 0; y < this._maze[x].length; y++) {
-                if (this._maze[y][x] === portalType) {
+        for (let x = 0; x < this.maze.length; x++) {
+            for (let y = 0; y < this.maze[x].length; y++) {
+                if (this.maze[y][x] === portalType) {
                     coords = {x: x, y: y};
                     break;
                 }
@@ -37,7 +29,7 @@ export default class Maze {
     };
 
     getCurrentPosition() {
-        return this._currentCoords;
+        return this.currentCoords;
     };
 
     _setCurrentPosition(x, y) {
@@ -53,42 +45,49 @@ export default class Maze {
     };
 
     _checkInMaze(x, y) {
-        return x >= 0 && y >= 0 && y < this._maze.length && x < this._maze[y].length
+        return x >= 0 && y >= 0 && y < this.maze.length && x < this.maze[y].length
     };
 
     _checkFree(x, y) {
-        return this._checkInMaze(x, y) && this._maze[y][x] !== 1;
+        return this._checkInMaze(x, y) && this.maze[y][x] !== 1;
     };
 
     up() {
         this._move(0, -1);
-        return this._currentCoords;
+        return this.currentCoords;
     };
 
     down() {
         this._move(0, 1);
-        return this._currentCoords;
+        return this.currentCoords;
     };
 
     left() {
         this._move(-1, 0);
-        return this._currentCoords;
+        return this.currentCoords;
     };
 
     right() {
         this._move(1, 0);
-        return this._currentCoords;
+        return this.currentCoords;
     };
 
     _move(dx, dy) {
-        let newCoords = {
-            x: this._currentCoords.x + dx,
-            y: this._currentCoords.y + dy
-        };
+        let that = this;
+        
+        setTimeout(() => {
+            let newCoords = {
+                x: that.currentCoords.x + dx,
+                y: that.currentCoords.y + dy
+            };
 
-        if (this._checkInMaze(newCoords.x, newCoords.y) && this._checkFree(newCoords.x, newCoords.y)) {
-            this._setCurrentPosition(newCoords.x, newCoords.y);
-        }
+            if (that._checkInMaze(newCoords.x, newCoords.y) && that._checkFree(newCoords.x, newCoords.y)) {
+                that._setCurrentPosition(newCoords.x, newCoords.y);
+            }
+        }, this.timeout);
+        
+        this.timeout += 500;
+        
     }
 
     getNeighbours() {
@@ -100,8 +99,8 @@ export default class Maze {
 
         for (let y = -1; y <= 1; y++) {
             for (let x = -1; x <= 1; x++) {
-                if (this._checkFree(this._currentCoords.x + x, this._currentCoords.y + y)) {
-                    neighbours[y + 1][x + 1] = this._maze[this._currentCoords.y + y][this._currentCoords.x + x]
+                if (this._checkFree(this.currentCoords.x + x, this.currentCoords.y + y)) {
+                    neighbours[y + 1][x + 1] = this.maze[this.currentCoords.y + y][this.currentCoords.x + x]
                 }
             }
         }
@@ -111,17 +110,17 @@ export default class Maze {
 
     isMazeSolved() {
         let exitCoords = this.getExitPosition();
-        return this._currentCoords.x === exitCoords.x && this._currentCoords.y === exitCoords.y;
+        return this.currentCoords.x === exitCoords.x && this.currentCoords.y === exitCoords.y;
     };
 
     replay() {
-        this._timeout = 0;
-        for (let i = 0; i < this._history.length; i++) {
+        this.timeout = 0;
+        for (let i = 0; i < this.history.length; i++) {
             let that = this;
             setTimeout(function () {
-                that._replayPosition(that._history[i].x, that._history[i].y);
-            }, this._timeout);
-            this._timeout += 500;
+                that._replayPosition(that.history[i].x, that.history[i].y);
+            }, this.timeout);
+            this.timeout += 500;
         }
     };
 };

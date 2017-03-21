@@ -1,7 +1,6 @@
 import React from "react";
 import {connect} from "react-redux";
 import Canvas from "react-canvas-component";
-import Maze from "../lib/Maze";
 import {actionMove, actionReplay, actionReset} from "../action/action";
 
 class MazeCanvas extends React.Component {
@@ -64,13 +63,13 @@ class MazeCanvas extends React.Component {
     }
 
     render() {
-        window.Maze = new Maze(this.props.currentCoords, this.props.maze, this.props.history, (x, y) => {
-            this.props.dispatch(actionMove({x: x, y: y}))
-        }, (x, y) => {
-            this.props.dispatch(actionReplay({x: x, y: y}));
-        }, () => {
-            this.props.dispatch(actionReset());
-        });
+        window.Maze.maze = this.props.maze;
+        window.Maze.currentCoords = this.props.currentCoords;
+        window.Maze.history = this.props.history;
+
+        window.Maze._moveBot = (x, y) => this.props.dispatch(actionMove({x: x, y: y}));
+        window.Maze._replay = (x, y) => this.props.dispatch(actionReplay({x: x, y: y}));
+        window.Maze.reset = () => this.props.dispatch(actionReset());
 
         return <Canvas draw={this.drawCanvas} width={this.props.maze[0].length * 40}
                        height={this.props.maze.length * 40} style={{"border": "5px solid #000000"}}/>

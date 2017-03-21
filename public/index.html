@@ -61,12 +61,10 @@
             return Sk.importMainWithBody("<stdin>", false, prog, true);
         });
         return myPromise.then(function (mod) {
-            let mypre = document.getElementById('output');
-            if (window.Maze.isMazeSolved()) {
-                mypre.innerHTML += 'Maze solved in ' + (window.Maze._history.length - 1) + ' moves.<br />';
-            }
+            //if(typeof window.Maze.history !== 'undefined' && window.Maze.history.length > 0) {
+            //    mypre.innerHTML += 'Total moves: ' + (window.Maze.history.length - 1) + '<br />';
+            //}
         }, function (err) {
-            let mypre = document.getElementById('output');
             mypre.innerHTML = err.toString();
         });
     }

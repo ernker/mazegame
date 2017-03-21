@@ -4,6 +4,7 @@ import App from "./App";
 import "./index.css";
 import {Provider} from "react-redux";
 import configureStore from "./store/store.js";
+import Maze from "./lib/Maze";
 
 export default function init() {
     let initState = {
@@ -92,16 +93,26 @@ export default function init() {
                 [0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0],
                 [0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0],
                 [0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 3]]],
-        maze: [],
+        maze: [[2, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0],
+            [0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0],
+            [0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0],
+            [0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0],
+            [0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0],
+            [0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1],
+            [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0],
+            [0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0],
+            [0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0],
+            [0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 3]],
         mazeIndex: 1,
         currentCoords: {x: 0, y: 0},
         history: []
     };
-    initState.maze = initState.mazes[initState.mazeIndex];
     return initState;
 };
 
 let store = configureStore(init());
+window.Maze = new Maze();
 
 ReactDOM.render(
     (

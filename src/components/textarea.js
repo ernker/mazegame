@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import {Button, Col} from "react-bootstrap";
 import CodeMirror from "react-codemirror";
 import "codemirror/mode/python/python";
-import {actionRunCodeAsync, actionNextMaze} from "../action/action";
+import {actionNextMaze} from "../action/action";
 import "../../node_modules/codemirror/lib/codemirror.css";
 import MazeCanvas from "./mazecanvas";
 
@@ -25,7 +25,7 @@ class Textarea extends React.Component {
 
     handleRunClick(e) {
         e.preventDefault();
-        this.props.dispatch(actionRunCodeAsync(this.state.textarea));
+        window.runCode(this.state.textarea);
     }
 
     handleReplayClick(e) {
@@ -36,6 +36,13 @@ class Textarea extends React.Component {
     handleNextMazeClick(e) {
         e.preventDefault();
         this.props.dispatch(actionNextMaze());
+    }
+
+    componentDidMount() {
+        const cm = this.refs.editor.getCodeMirror();
+        const {width, height} = {width: 440, height: 450};
+        // set width & height
+        cm.setSize(width, height);
     }
 
     render() {
@@ -57,7 +64,7 @@ class Textarea extends React.Component {
                     </MazeCanvas>
                 </Col>
                 <Col md={6}>
-                    <CodeMirror value={this.state.textarea} onChange={this.handleChange.bind(this)} options={options}/>
+                    <CodeMirror ref="editor" value={this.state.textarea} onChange={this.handleChange.bind(this)} options={options}/>
                     <br />
                     <Button bsStyle="primary" onClick={this.handleRunClick.bind(this)}>RUN</Button>
                     <span> </span>
@@ -73,7 +80,7 @@ class Textarea extends React.Component {
 }
 
 function mapStatetoProps(state) {
-    return { code: state.code };
+    return {code: state.code};
 }
 
 export default connect(mapStatetoProps)(Textarea)
