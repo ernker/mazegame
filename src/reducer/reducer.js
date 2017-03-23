@@ -1,5 +1,89 @@
 import init from "../index";
 
+const mazes = [[[2, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0],
+    [0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0],
+    [0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0],
+    [0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1],
+    [0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+    [0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0],
+    [0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0],
+    [1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0],
+    [0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0],
+    [0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0],
+    [0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 3]],
+
+    [[2, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0],
+        [0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0],
+        [0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0],
+        [0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0],
+        [0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0],
+        [0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1],
+        [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0],
+        [0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0],
+        [0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0],
+        [0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 3]],
+
+    [[2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0],
+        [0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0],
+        [0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1],
+        [0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0],
+        [0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0],
+        [0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0],
+        [1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0],
+        [0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0],
+        [1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1],
+        [0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 3]],
+
+    [[2, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+        [1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0],
+        [0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0],
+        [1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0],
+        [0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0],
+        [1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1],
+        [0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0],
+        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+        [0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+        [0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0],
+        [0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 3]],
+
+    [[2, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+        [0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1],
+        [0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+        [0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1],
+        [0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0],
+        [0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0],
+        [0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+        [0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0],
+        [0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0],
+        [0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0],
+        [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 3]],
+
+    [[2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0],
+        [0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0],
+        [0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0],
+        [0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0],
+        [1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0],
+        [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+        [1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0],
+        [0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0],
+        [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0],
+        [0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 3]],
+
+    [[2, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+        [0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0],
+        [0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0],
+        [0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1],
+        [0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0],
+        [1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
+        [0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0],
+        [0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0],
+        [0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0],
+        [0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 3]]];
+
 export default function reducer(state = init(), action) {
     //let newState = Object.assign({}, state);
     let newState = {};
@@ -7,7 +91,6 @@ export default function reducer(state = init(), action) {
     switch (action.type) {
         case 'MOVE':
             newState.maze = [...state.maze];
-            newState.mazes = [...state.mazes];
             newState.mazeIndex = state.mazeIndex;
             let newCoordsMove = action.moveToCoords;
             newState.currentCoords = newCoordsMove;
@@ -16,21 +99,19 @@ export default function reducer(state = init(), action) {
 
         case 'REPLAY':
             newState.maze = [...state.maze];
-            newState.mazes = [...state.mazes];
             newState.mazeIndex = state.mazeIndex;
             newState.currentCoords = action.moveToCoords;
-            newState.history = [...state.history]
+            newState.history = [...state.history];
             break;
 
         case 'NEXTMAZE':
-            if (state.mazeIndex < state.mazes.length - 1) {
+            if (state.mazeIndex < mazes.length - 1) {
                 newState.mazeIndex = state.mazeIndex + 1;
             }
             else {
                 newState.mazeIndex = 0;
             }
-            newState.maze = [...state.mazes[newState.mazeIndex]];
-            newState.mazes = [...state.mazes];
+            newState.maze = [...mazes[newState.mazeIndex]];
             let entryPositionNextMaze = getEntryPosition(newState.maze);
             newState.currentCoords = entryPositionNextMaze;
             newState.history = [entryPositionNextMaze];
@@ -38,7 +119,6 @@ export default function reducer(state = init(), action) {
 
         case 'RESET':
             newState.maze = [...state.maze];
-            newState.mazes = [...state.mazes];
             newState.mazeIndex = state.mazeIndex;
             let entryPositionReset = getEntryPosition(newState.maze);
             newState.currentCoords = entryPositionReset;
@@ -47,7 +127,6 @@ export default function reducer(state = init(), action) {
 
         default:
             newState.maze = [...state.maze];
-            newState.mazes = [...state.mazes];
             newState.mazeIndex = state.mazeIndex;
             let entryPositionDefault = getEntryPosition(newState.maze);
             newState.currentCoords = entryPositionDefault;

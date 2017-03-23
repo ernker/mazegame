@@ -1,10 +1,6 @@
 export default class Maze {
     timeout = 0;
 
-    getMaze() {
-        return this.maze;
-    };
-
     _getPortalPosition(portalType) {
         let coords = {x: -1, y: -1};
 
