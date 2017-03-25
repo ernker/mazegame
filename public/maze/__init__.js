@@ -5,7 +5,6 @@ let $builtinmodule = function (name) {
         $loc.__init__ = new Sk.builtin.func(function (self, prop) {
             self.prop = prop;
             window.Maze.reset();
-            window.Maze.timeout = 0;
         });
 
         $loc.get_entry_position = new Sk.builtin.func(function (self) {
