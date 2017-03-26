@@ -1,25 +1,29 @@
-export function actionMove(coords) {
-    return {
-        type: 'MOVE',
-        moveToCoords: coords
-    };
+export function actionDrawMazeAsync(botCoords) {
+    return dispatch => {
+/*        new Promise(resolve => setTimeout(resolve, 500))
+            .then(dispatch({
+                type: 'DRAWMAZE',
+                botCoords: botCoords
+            }));
+*/
+        setTimeout(() => {
+            dispatch({
+                type: 'DRAWMAZE',
+                botCoords: botCoords
+            });
+        }, 500);
+    }
 }
 
-export function actionReplay(coords) {
+export function actionDrawMaze(botCoords) {
     return {
-        type: 'REPLAY',
-        moveToCoords: coords
+        type: 'DRAWMAZE',
+        botCoords: botCoords
     };
 }
 
 export function actionNextMaze() {
     return {
         type: 'NEXTMAZE'
-    };
-}
-
-export function actionReset() {
-    return {
-        type: 'RESET'
     };
 }

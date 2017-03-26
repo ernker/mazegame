@@ -1,7 +1,6 @@
 import React from "react";
 import {connect} from "react-redux";
 import Canvas from "react-canvas-component";
-import {actionMove, actionReplay, actionReset} from "../action/action";
 
 class MazeCanvas extends React.Component {
     constructor() {
@@ -14,16 +13,16 @@ class MazeCanvas extends React.Component {
 
     drawBlock(ctx, {x, y}) {
         const {width, height} = ctx.canvas;
-        let blockWidth = width / this.props.maze[0].length;
-        let blockHeight = height / this.props.maze.length;
+        let blockWidth = width / this.props.mazeToRender[0].length;
+        let blockHeight = height / this.props.mazeToRender.length;
         ctx.fillStyle = 'black';
         ctx.fillRect(x * blockWidth, y * blockHeight, blockWidth, blockHeight);
     }
 
     drawBot(ctx, {x, y}) {
         const {width, height} = ctx.canvas;
-        let blockWidth = width / this.props.maze[0].length;
-        let blockHeight = height / this.props.maze.length;
+        let blockWidth = width / this.props.mazeToRender[0].length;
+        let blockHeight = height / this.props.mazeToRender.length;
         ctx.fillStyle = 'red';
         //ctx.fillRect(x * blockWidth, y * blockHeight, blockWidth, blockHeight);
         ctx.arc(x * blockWidth + blockWidth / 2, y * blockHeight + blockWidth / 2, Math.min(blockWidth * 0.75, blockHeight * 0.75) / 2, 0, 2 * Math.PI);
@@ -32,14 +31,14 @@ class MazeCanvas extends React.Component {
 
     drawCanvas({ctx, time}) {
         const {width, height} = ctx.canvas;
-        let blockWidth = width / this.props.maze[0].length;
-        let blockHeight = height / this.props.maze.length;
+        let blockWidth = width / this.props.mazeToRender[0].length;
+        let blockHeight = height / this.props.mazeToRender.length;
         ctx.beginPath();
         ctx.clearRect(0, 0, width, height);
 
-        for (let y = 0; y < this.props.maze.length; y++) {
-            for (let x = 0; x < this.props.maze[y].length; x++) {
-                switch (this.props.maze[y][x]) {
+        for (let y = 0; y < this.props.mazeToRender.length; y++) {
+            for (let x = 0; x < this.props.mazeToRender[y].length; x++) {
+                switch (this.props.mazeToRender[y][x]) {
                     case 0: // Empty space
                         ctx.fillStyle = 'white';
                         break;
@@ -58,29 +57,20 @@ class MazeCanvas extends React.Component {
                 ctx.fillRect(x * blockWidth, y * blockHeight, blockWidth, blockHeight);
             }
         }
-        this.drawBot(ctx, this.props.currentCoords);
+        this.drawBot(ctx, this.props.botCoordsToRender);
         ctx.closePath();
     }
 
     render() {
-        window.Maze.maze = this.props.maze;
-        window.Maze.currentCoords = this.props.currentCoords;
-        window.Maze.history = this.props.history;
-
-        window.Maze._moveBot = (x, y) => this.props.dispatch(actionMove({x: x, y: y}));
-        window.Maze._replay = (x, y) => this.props.dispatch(actionReplay({x: x, y: y}));
-        window.Maze.reset = () => this.props.dispatch(actionReset());
-
-        return <Canvas draw={this.drawCanvas} width={this.props.maze[0].length * 40}
-                       height={this.props.maze.length * 40} style={{"border": "5px solid #000000"}}/>
+        return <Canvas draw={this.drawCanvas} width={this.props.mazeToRender[0].length * 40}
+                       height={this.props.mazeToRender.length * 40} style={{"border": "5px solid #000000"}}/>
     }
 }
 
 function mapStatetoProps(state) {
     return {
-        maze: state.maze,
-        currentCoords: state.currentCoords,
-        history: state.history
+        mazeToRender: state.mazeToRender,
+        botCoordsToRender: state.botCoordsToRender
     };
 }
 

@@ -61,9 +61,7 @@
             return Sk.importMainWithBody("<stdin>", false, prog, true);
         });
         return myPromise.then(function (mod) {
-            //if(typeof window.Maze.history !== 'undefined' && window.Maze.history.length > 0) {
-            //    mypre.innerHTML += 'Total moves: ' + (window.Maze.history.length - 1) + '<br />';
-            //}
+            mypre.innerHTML += 'Total moves: ' + (window.Maze.getHistory().length - 1) + '<br />';
         }, function (err) {
             mypre.innerHTML = err.toString();
         });
