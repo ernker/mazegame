@@ -26,10 +26,6 @@ class Maze {
         return Maze.getPortalPosition(this._maze, EntryPortal);
     };
 
-    getExitPosition() {
-        return Maze.getPortalPosition(this._maze, ExitPortal);
-    };
-
     getCurrentPosition() {
         return this._currentCoords;
     };
@@ -99,7 +95,7 @@ class Maze {
     };
 
     isMazeSolved() {
-        let exitCoords = this.getExitPosition();
+        let exitCoords = Maze.getPortalPosition(this._maze, ExitPortal);
         return this._currentCoords.x === exitCoords.x && this._currentCoords.y === exitCoords.y;
     };
 
