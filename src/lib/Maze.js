@@ -1,15 +1,18 @@
-export default class Maze {
+const EntryPortal = 2;
+const ExitPortal = 3;
+
+class Maze {
     constructor(maze) {
         this._maze = maze;
         this.reset();
     }
 
-    _getPortalPosition(portalType) {
+    static getPortalPosition(maze, portalType) {
         let coords = {x: -1, y: -1};
 
-        for (let x = 0; x < this._maze.length; x++) {
-            for (let y = 0; y < this._maze[x].length; y++) {
-                if (this._maze[y][x] === portalType) {
+        for (let x = 0; x < maze.length; x++) {
+            for (let y = 0; y < maze[x].length; y++) {
+                if (maze[y][x] === portalType) {
                     coords = {x: x, y: y};
                     break;
                 }
@@ -20,11 +23,7 @@ export default class Maze {
     };
 
     getEntryPosition() {
-        return this._getPortalPosition(2);
-    };
-
-    getExitPosition() {
-        return this._getPortalPosition(3);
+        return Maze.getPortalPosition(this._maze, EntryPortal);
     };
 
     getCurrentPosition() {
@@ -96,7 +95,7 @@ export default class Maze {
     };
 
     isMazeSolved() {
-        let exitCoords = this.getExitPosition();
+        let exitCoords = Maze.getPortalPosition(this._maze, ExitPortal);
         return this._currentCoords.x === exitCoords.x && this._currentCoords.y === exitCoords.y;
     };
 
@@ -108,4 +107,6 @@ export default class Maze {
     getHistory() {
         return this._history;
     }
-};
+}
+
+export {Maze, EntryPortal, ExitPortal};

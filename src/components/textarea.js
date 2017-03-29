@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import {Button, Col} from "react-bootstrap";
 import CodeMirror from "react-codemirror";
 import "codemirror/mode/python/python";
-import {actionDrawMazeAsync, actionNextMaze} from "../action/action";
+import {actionDrawMaze, actionNextMaze} from "../action/action";
 import "../../node_modules/codemirror/lib/codemirror.css";
 import MazeCanvas from "./mazecanvas";
 
@@ -30,10 +30,14 @@ class Textarea extends React.Component {
 
     handleReplayClick(e) {
         e.preventDefault();
-        //window.Maze.getHistory().reduce((prev, cur) => prev.then(this.props.dispatch(actionDrawMazeAsync(cur))), Promise.resolve());
         let history = window.Maze.getHistory();
+        let timeout = 0;
         history.forEach(item => {
-            this.props.dispatch(actionDrawMazeAsync(item))
+            setTimeout(() => {
+                this.props.dispatch(actionDrawMaze(item, timeout));
+            }, timeout);
+
+            timeout += 500;
         });
     }
 

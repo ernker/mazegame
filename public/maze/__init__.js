@@ -11,10 +11,6 @@ let $builtinmodule = function (name) {
             return Sk.ffi.remapToPy(window.Maze.getEntryPosition());
         });
 
-        $loc.get_exit_position = new Sk.builtin.func(function (self) {
-            return Sk.ffi.remapToPy(window.Maze.getExitPosition());
-        });
-
         $loc.get_current_position = new Sk.builtin.func(function (self) {
             return Sk.ffi.remapToPy(window.Maze.getCurrentPosition());
         });

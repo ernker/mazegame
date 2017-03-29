@@ -58,7 +58,7 @@
         };
         Sk.configure({output: outf, read: builtinRead});
         let myPromise = Sk.misceval.asyncToPromise(function () {
-            return Sk.importMainWithBody("<stdin>", false, prog, true);
+            return Sk.importMainWithBody("<stdin>", false, "from maze import Maze\n\nmaze = Maze()\n\n" + prog, true);
         });
         return myPromise.then(function (mod) {
             mypre.innerHTML += 'Total moves: ' + (window.Maze.getHistory().length - 1) + '<br />';
