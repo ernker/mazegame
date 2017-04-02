@@ -1,41 +1,40 @@
 import React, {Component} from "react";
-import "./App.css";
+import Header from './components/header.js'
 import {connect} from "react-redux";
-import Textarea from "./components/textarea.js";
-import RulesOfGame from "./components/rulesofgame.js";
+import Mazegame from "./components/mazegame.js";
 import {Grid, Row, Col} from "react-bootstrap";
+import {Login} from './components/login.js';
+import {Signup} from './components/signup.js';
+import {Home} from './components/home.js';
+import Scoreboard from './components/scoreboard.js';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
+
 
 class App extends Component {
     render() {
         return (
-            <div>
+            <Router>
                 <Grid>
                     <Row>
-                        <Col md={12}>
-                            <div className="App">
-                                <div className="App-header">
-                                </div>
+                        <Col>
+                            <div>
+                                <Header/>
                             </div>
                         </Col>
                     </Row>
-                    <br />
-                    <Row className='show-grid'>
-                        <Textarea />
-                    </Row>
-                </Grid>
-                <Grid>
+                    <br/>
                     <Row>
-                        <Col md={12}>
-                            <RulesOfGame />
-                        </Col>
+                        <Route exact={true} path='/' component={Home} />
+                        <Route path='/mazegame' component={Mazegame} />
+                        <Route path='/login' component={Login} />
+                        <Route path='/signup' component={Signup} />
+                        <Route path='/scoreboard' component={Scoreboard} />
                     </Row>
                 </Grid>
-
-            </div>
+            </Router>
         );
     }
 }
-
 
 function mapStatetoProps(state) {
     return state
