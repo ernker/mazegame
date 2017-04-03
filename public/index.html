@@ -58,15 +58,11 @@
         };
         Sk.configure({output: outf, read: builtinRead});
         let myPromise = Sk.misceval.asyncToPromise(function () {
-            return Sk.importMainWithBody("<stdin>", false, prog, true);
+            return Sk.importMainWithBody("<stdin>", false, "from maze import Maze\n\nmaze = Maze()\n\n" + prog, true);
         });
         return myPromise.then(function (mod) {
-            let mypre = document.getElementById('output');
-            if (window.Maze.isMazeSolved()) {
-                mypre.innerHTML += 'Maze solved in ' + (window.Maze._history.length - 1) + ' moves.<br />';
-            }
+            mypre.innerHTML += 'Total moves: ' + (window.Maze.getHistory().length - 1) + '<br />';
         }, function (err) {
-            let mypre = document.getElementById('output');
             mypre.innerHTML = err.toString();
         });
     }

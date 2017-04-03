@@ -1,22 +1,12 @@
-export function actionRunCodeAsync(code) {
-    return dispatch => {
-        window.runCode(code)
-            .then(rez => {
-                dispatch(actionRunCode(rez))
-            });
+export function actionDrawMaze(botCoords) {
+    return {
+        type: 'DRAWMAZE',
+        botCoords: botCoords
     };
 }
 
-function actionRunCode(rez) {
+export function actionNextMaze() {
     return {
-        type: 'CODE',
-        runcode: rez
-    };
-}
-
-export function actionMove(coords) {
-    return {
-        type: 'MOVE',
-        moveToCoords: coords
+        type: 'NEXTMAZE'
     };
 }
