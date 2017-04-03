@@ -37,7 +37,7 @@ class Textarea extends React.Component {
                 this.props.dispatch(actionDrawMaze(item, timeout));
             }, timeout);
 
-            timeout += 500;
+            timeout += 200;
         });
     }
 

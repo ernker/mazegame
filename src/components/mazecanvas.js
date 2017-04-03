@@ -62,8 +62,8 @@ class MazeCanvas extends React.Component {
     }
 
     render() {
-        return <Canvas draw={this.drawCanvas} width={this.props.mazeToRender[0].length * 40}
-                       height={this.props.mazeToRender.length * 40} style={{"border": "5px solid #000000"}}/>
+        return <Canvas draw={this.drawCanvas} width={500}
+                       height={500} style={{"border": "5px solid #000000"}}/>
     }
 }
 

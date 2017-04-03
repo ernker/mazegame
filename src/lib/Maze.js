@@ -33,8 +33,8 @@ class Maze {
     _setCurrentPosition(x, y) {
         if (this._checkFree(x, y)) {
             this._currentCoords = {x: x, y: y};
-            this._history.push(this._currentCoords);
         }
+        this._history.push(this._currentCoords);
     };
 
     _checkInMaze(x, y) {
@@ -71,7 +71,7 @@ class Maze {
             y: this._currentCoords.y + dy
         };
 
-        if (this._checkInMaze(newCoords.x, newCoords.y) && this._checkFree(newCoords.x, newCoords.y)) {
+        if (this._checkInMaze(newCoords.x, newCoords.y)) {
             this._setCurrentPosition(newCoords.x, newCoords.y);
         }
     }
