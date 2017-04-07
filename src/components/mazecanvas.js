@@ -1,6 +1,6 @@
 import React from "react";
 import {connect} from "react-redux";
-import Canvas from "react-canvas-component";
+import Canvas from "react-canvas-component/es5";
 
 class MazeCanvas extends React.Component {
     constructor() {

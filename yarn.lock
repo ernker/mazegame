@@ -4195,9 +4195,9 @@ react-bootstrap@^0.30.7:
     uncontrollable "^4.0.1"
     warning "^3.0.0"
 
-react-canvas-component@0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/react-canvas-component/-/react-canvas-component-0.1.1.tgz#1287548e0d7598d35e09a331305b2c8c65e74327"
+react-canvas-component@0.1.5:
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/react-canvas-component/-/react-canvas-component-0.1.5.tgz#40f9c235bb2570240966a5a5f67f7273fce1bf51"
 
 react-codemirror@^0.3.0:
   version "0.3.0"
