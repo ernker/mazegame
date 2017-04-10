@@ -1,12 +1,13 @@
 import React from "react";
 import {connect} from "react-redux";
-import RaisedButton from 'material-ui/RaisedButton';
 import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
 import FlatButton from 'material-ui/FlatButton';
+import RaisedButton from 'material-ui/RaisedButton';
 import {getStyles} from 'material-ui/AppBar/AppBar';
 import MenuItem from 'material-ui/MenuItem';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import If from '../lib/if';
 
 class Header extends React.Component {
 
@@ -14,7 +15,7 @@ class Header extends React.Component {
         super();
 
         this.state = {
-            open: false
+            open: false,
         };
     }
 
@@ -26,25 +27,50 @@ class Header extends React.Component {
         this.setState({ open: !this.state.open })
     }
 
-    render() {
+    handleLogout(e) {
+        e.preventDefault;
+        this.props.dispatch({type: 'LOGOUT'});
+        this.props.history.push('/');
+    }
 
+    render() {
+        const {isAuthenticated} = this.props
+        
+        const Element = () => {
+            if (!isAuthenticated) {
+                return (
+                    <Link to='/login'>
+                        <FlatButton label="LOG IN" style={style.flatButton}/>
+                    </Link>
+                )
+            } else {
+               return (<FlatButton label='LOG OUT' onTouchTap={this.handleLogout.bind(this)} style={style.flatButton}/>)
+            }
+        }
+        
         const style = getStyles(this.props, this.context);
-        console.log(style)
         const elemRight = (
             <div>
+                <Link to='/'>
+                    <FlatButton label="HOME" style={style.flatButton}/>
+                </Link>
+                <Link to='/scoreboard'>
+                    <FlatButton label="LEADER BOARD" style={style.flatButton}/>
+                </Link>
                 <Link to='/mazegame'>
                     <FlatButton label="MAZE GAME" style={style.flatButton}/>
                 </Link>
-                <Link to='/signup'>
-                  <FlatButton label="SIGN UP" style={style.flatButton}/>
-                </Link>
-                <Link to='/login'>
-                    <FlatButton label="LOGIN" style={style.flatButton}/>
-                </Link>
+                <If cond={!this.props.isAuthenticated}>
+                    <Link to='/signup'>
+                        <FlatButton label="SIGN UP" style={style.flatButton}/>
+                    </Link>
+                </If>
+                <Element />
             </div>
         )
 
         return (
+            
             <div>
                 <AppBar title='Maze game' onLeftIconButtonTouchTap={this.handleTouchTap.bind(this)} iconElementRight={elemRight} />
                 <Drawer docked={false} onRequestChange={(open) => this.setState({open})} open={this.state.open}>
@@ -57,7 +83,6 @@ class Header extends React.Component {
                     <Link to='/scoreboard'>
                         <MenuItem primaryText='Scoreboard'/>
                     </Link>
-                    <MenuItem primaryText='Info'/>
                 </Drawer>
             </div>
         )

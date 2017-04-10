@@ -10,3 +10,10 @@ export function actionNextMaze() {
         type: 'NEXTMAZE'
     };
 }
+
+export function actionToken(payload) {
+    return {
+        type: 'TOKEN',
+        token: payload
+    };
+}

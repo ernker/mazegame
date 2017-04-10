@@ -3,22 +3,23 @@ import Header from './components/header.js'
 import {connect} from "react-redux";
 import Mazegame from "./components/mazegame.js";
 import {Grid, Row, Col} from "react-bootstrap";
-import {Login} from './components/login.js';
-import {Signup} from './components/signup.js';
+import Login from './components/login.js';
+import Signup from './components/signup.js';
 import {Home} from './components/home.js';
 import Scoreboard from './components/scoreboard.js';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 
-
 class App extends Component {
+    
     render() {
+        console.log('App',this.props)
         return (
             <Router>
                 <Grid>
                     <Row>
                         <Col>
                             <div>
-                                <Header/>
+                                <Route path='/' component={Header} />
                             </div>
                         </Col>
                     </Row>

@@ -9,7 +9,7 @@ export const Home = ({ match }) => {
     return (
         <div>
             <Col md={8} mdOffset={4}> 
-                <img src={logo}  style={{ height: 200, width: 200}} />
+                <img src={logo}  role="presentation" style={{ height: 200, width: 200}} />
             </Col>
             <Col md={5} mdOffset={1}>
                 <RulesOfGame />
