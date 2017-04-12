@@ -29,7 +29,7 @@ class Header extends React.Component {
     handleLogout(e) {
         e.preventDefault;
         this.props.dispatch({type: 'LOGOUT'});
-        this.props.history.push('/');
+        this.props.history.push('/ui');
     }
 
     render() {
@@ -38,7 +38,7 @@ class Header extends React.Component {
         const Element = () => {
             if (!isAuthenticated) {
                 return (
-                    <Link to='/login'>
+                    <Link to='/ui/login'>
                         <FlatButton label="LOG IN" style={style.flatButton}/>
                     </Link>
                 )
@@ -50,17 +50,17 @@ class Header extends React.Component {
         const style = getStyles(this.props, this.context);
         const elemRight = (
             <div>
-                <Link to='/'>
+                <Link to='/ui'>
                     <FlatButton label="HOME" style={style.flatButton}/>
                 </Link>
-                <Link to='/scoreboard'>
+                <Link to='/ui/scoreboard'>
                     <FlatButton label="LEADER BOARD" style={style.flatButton}/>
                 </Link>
-                <Link to='/mazegame'>
+                <Link to='/ui/mazegame'>
                     <FlatButton label="MAZE GAME" style={style.flatButton}/>
                 </Link>
                 <If cond={!this.props.isAuthenticated}>
-                    <Link to='/signup'>
+                    <Link to='/ui/signup'>
                         <FlatButton label="SIGN UP" style={style.flatButton}/>
                     </Link>
                 </If>
@@ -73,13 +73,13 @@ class Header extends React.Component {
             <div>
                 <AppBar title='Maze game' onLeftIconButtonTouchTap={this.handleTouchTap.bind(this)} iconElementRight={elemRight} />
                 <Drawer docked={false} onRequestChange={(open) => this.setState({open})} open={this.state.open}>
-                    <Link to='/'>
+                    <Link to='/ui'>
                         <MenuItem primaryText='Home'/>
                     </Link>
-                    <Link to='/mazegame'>
+                    <Link to='/ui/mazegame'>
                         <MenuItem primaryText='Maze game'/>
                     </Link>
-                    <Link to='/scoreboard'>
+                    <Link to='/ui/scoreboard'>
                         <MenuItem primaryText='Scoreboard'/>
                     </Link>
                 </Drawer>

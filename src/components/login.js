@@ -23,13 +23,13 @@ class Login extends Component {
     
     handleClick(e) {
         e.preventDefault;
-        
+        console.log('click!')
         const credentials = {
             username : this.state.username,
             password: this.state.password
         }
 
-        fetch('https://ec2-52-57-177-201.eu-central-1.compute.amazonaws.com/api/tokens/', {
+        fetch('https://www.2hard4u.eu/api/tokens/', {
             method: 'POST',
             headers: { 
                 'Content-Type': 'application/json'
@@ -50,7 +50,7 @@ class Login extends Component {
             })
             .then(res => {
                 this.props.dispatch(actionToken(res.token));
-                this.props.history.push('/mazegame')
+                this.props.history.push('/ui/mazegame')
             }).catch(error => console.log('There has been a problem with your fetch operation: ' + error.message));
     }
 
@@ -75,7 +75,7 @@ class Login extends Component {
                     <TextField floatingLabelText="Password" type='password' onChange={this.handlePassword.bind(this)}/><br/>
                 </Col>
                 <Col md={3} mdOffset={4} style={{marginTop: 20}}>
-                    <Link to='/signup'>
+                    <Link to='/ui/signup'>
                         <FlatButton label="Sign up" primary={true}/>
                     </Link>
                     <RaisedButton label="Go" primary={true} onTouchTap={this.handleClick.bind(this)} />

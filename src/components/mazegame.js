@@ -72,7 +72,7 @@ class Mazegame extends React.Component {
 
             const auth = 'Token '+this.props.token
 
-            fetch('https://ec2-52-57-177-201.eu-central-1.compute.amazonaws.com/api/snippets/', {
+            fetch('https://www.2hard4u.eu/api/snippets/', {
                 method: 'POST',
                 haders: {
                     'Authorization': auth,
@@ -116,7 +116,7 @@ class Mazegame extends React.Component {
 
             const auth = 'Token '+this.props.token
 
-            fetch('https://ec2-52-57-177-201.eu-central-1.compute.amazonaws.com/api/snippets/', {
+            fetch('https://www.2hard4u.eu/api/snippets/', {
                 method: 'PUT',
                 haders: {
                     'Authorization': auth,
@@ -161,7 +161,7 @@ class Mazegame extends React.Component {
         const auth = 'Token '+this.props.token
 
         if (this.props.isAuthenticated) {
-            fetch('https://ec2-52-57-177-201.eu-central-1.compute.amazonaws.com/api/snippets/', {
+            fetch('https://www.2hard4u.eu/api/snippets/', {
                 headers: {
                     'Authorization': auth
                 }

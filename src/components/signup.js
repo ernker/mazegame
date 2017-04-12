@@ -54,7 +54,7 @@ class Signup extends Component {
             last_name: this.state.lastname
         }
 
-        fetch('https://ec2-52-57-177-201.eu-central-1.compute.amazonaws.com/api/users/', {
+        fetch('https://www.2hard4u.eu/api/users/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

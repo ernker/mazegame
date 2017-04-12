@@ -22,7 +22,7 @@ class Scoreboard extends Component {
   }
 
   componentDidMount() {
-    fetch('http://ec2-52-57-177-201.eu-central-1.compute.amazonaws.com/api/overall_scoreboard')
+    fetch('https://www.2hard4u.eu/api/overall_scoreboard')
     .then(res => {
       if (res.ok) {
         return res.json();

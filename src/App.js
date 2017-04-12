@@ -12,24 +12,23 @@ import {BrowserRouter as Router, Route} from 'react-router-dom';
 class App extends Component {
     
     render() {
-        console.log('App',this.props)
         return (
             <Router>
                 <Grid>
                     <Row>
                         <Col>
                             <div>
-                                <Route path='/' component={Header} />
+                                <Route path='/ui' component={Header} />
                             </div>
                         </Col>
                     </Row>
                     <br/>
                     <Row>
-                        <Route exact={true} path='/' component={Home} />
-                        <Route path='/mazegame' component={Mazegame} />
-                        <Route path='/login' component={Login} />
-                        <Route path='/signup' component={Signup} />
-                        <Route path='/scoreboard' component={Scoreboard} />
+                        <Route exact={true} path='/ui' component={Home} />
+                        <Route path='/ui/mazegame' component={Mazegame} />
+                        <Route path='/ui/login' component={Login} />
+                        <Route path='/ui/signup' component={Signup} />
+                        <Route path='/ui/scoreboard' component={Scoreboard} />
                     </Row>
                 </Grid>
             </Router>

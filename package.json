@@ -8,8 +8,8 @@
   "dependencies": {
     "brace": "^0.10.0",
     "halogen": "^0.2.0",
-    "material-ui": "^0.17.1",
-    "react": "^15.4.2",
+    "material-ui": "^0.17.3",
+    "react": "^15.4.0",
     "react-ace": "^4.2.0",
     "react-ace-wrapper": "^1.0.1",
     "react-bootstrap": "^0.30.7",
