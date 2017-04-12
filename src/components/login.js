@@ -29,7 +29,7 @@ class Login extends Component {
             password: this.state.password
         }
 
-        fetch('https://www.2hard4u.eu/api/tokens/', {
+        fetch('https://2hard4u.eu/api/tokens/', {
             method: 'POST',
             headers: { 
                 'Content-Type': 'application/json'
