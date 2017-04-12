@@ -4,21 +4,45 @@ export default class Pythonlibdoc extends React.Component {
 
     render() {
         return (
-
             <div>
-                <h2>Python Lib doc</h2>
-                <p style={{ fontWeight: 'bold'}}>
-                    Initialize Maze instance:
-                </p>
+                <h3>Python Lib docs</h3>
+                <h4>Python maze lib docs</h4>
+                <sub>
+                    The Maze class will be instantiated for you and assigned to the 'maze' variable,
+                    so you don't have to do it. All API calls should be made using that instance.
+                    The following code
+                    <b>should not be included</b>:
+                </sub>
                 <p>
                     from maze import Maze<br/>
-                    m = Maze()<br/>
+                    maze = Maze()<br/>
                 </p>
-                <p style={{ fontWeight: 'bold'}}>
+                <sub>
                     At first, it is Start coordinates, otherwise this call gives current location:
+                </sub>
+                <p>
+                    get_current_position()
                 </p>
                 <p>
-                    m.getCurrentPosition()
+                    get_entry_position()
+                </p>
+                <p>
+                    get_neighbours()
+                </p>
+                <p>
+                    up()
+                </p>
+                <p>
+                    down()
+                </p>
+                <p>
+                    left()
+                </p>
+                <p>
+                    right()
+                </p>
+                <p>
+                    is_maze_solved()
                 </p>
             </div>
         )

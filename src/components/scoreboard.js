@@ -22,7 +22,8 @@ class Scoreboard extends Component {
   }
 
   componentDidMount() {
-    fetch('https://demo4370489.mockable.io/api/message').then(res => {
+    fetch('http://ec2-52-57-177-201.eu-central-1.compute.amazonaws.com/api/overall_scoreboard')
+    .then(res => {
       if (res.ok) {
         return res.json();
       }
@@ -35,8 +36,6 @@ class Scoreboard extends Component {
   render() {
 
     const color = '#00bcd4';
-
-    console.log('Data status: ', this.state.data)
 
     return (
       <div>
@@ -61,7 +60,7 @@ class Scoreboard extends Component {
                     <TableHeaderColumn>Name</TableHeaderColumn>
                   </TableRow>
                 </TableHeader>
-                <TableBody displayRowCheckbox={false} stripedRows={true}>
+                <TableBody displayRowCheckbox={false} stripedRows={false}>
                   {this.state.data.map((row, index) => (
                     <TableRow key={index}>
                       <TableRowColumn >{row.rank}</TableRowColumn>

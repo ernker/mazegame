@@ -3,7 +3,6 @@ import {connect} from "react-redux";
 import {Col} from 'react-bootstrap'
 import {actionDrawMaze, actionNextMaze} from "../action/action";
 import MazeCanvas from "./mazecanvas";
-import RulesOfGame from "./rulesofgame.js";
 import RaisedButton from 'material-ui/RaisedButton';
 import {BrowserRouter as Router} from 'react-router-dom';
 import If from '../lib/if.js';
@@ -63,16 +62,23 @@ class Mazegame extends React.Component {
 
     handleSubmitCode(e) {
         e.preventDefault
-        console.log('User Type',this.state.userType);
 
         if (this.state.userType == 1) {
-            console.log('POST method')
-            fetch('https://demo4370489.mockable.io/api/snippets', {
-                method: 'post',
+
+            const payload = {
+                code: this.state.codearea,
+                language: 'python'
+            }
+
+            const auth = 'Token '+this.props.token
+
+            fetch('https://ec2-52-57-177-201.eu-central-1.compute.amazonaws.com/api/snippets/', {
+                method: 'POST',
                 haders: {
-                    'Authorization': this.props.token,
+                    'Authorization': auth,
+                    'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ code: this.state.codearea, language: 'python'})
+                body: JSON.stringify(payload)
             }).then(res => {
                 if (res.ok) {
                     return res.json();
@@ -88,7 +94,6 @@ class Mazegame extends React.Component {
 
                 throw new Error('internal server error');
             }).then(rez => {
-                console.log(rez.code.length)
                 if (rez.code.length !== 0) {
                     this.setState({ code: rez.code, userType: 2})
                 }
@@ -100,19 +105,24 @@ class Mazegame extends React.Component {
                 )
                 this.setState({ respmsg: item})
 
-                console.log(this.state)
-
             }).catch(error => console.log('There has been a problem with your fetch operation: ' + error.message));
 
         } else {
 
-            console.log("PUT method")
-            fetch('https://demo4370489.mockable.io/api/snippets', {
-                method: 'put',
+            const payload = {
+                code: this.state.codearea,
+                language: 'python'
+            }
+
+            const auth = 'Token '+this.props.token
+
+            fetch('https://ec2-52-57-177-201.eu-central-1.compute.amazonaws.com/api/snippets/', {
+                method: 'PUT',
                 haders: {
-                    'Authorization': this.props.token
+                    'Authorization': auth,
+                    'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ code: this.state.codearea, language: 'python'})
+                body: JSON.stringify(payload)
             }).then(res => {
                 if (res.ok) {
                     return res.json();
@@ -141,19 +151,19 @@ class Mazegame extends React.Component {
                 
                 this.setState({ respmsg: item})
 
-                console.log(rez)
-
             }).catch(error => console.log('There has been a problem with your fetch operation: ' + error.message));
         }
 
     }
 
-    componentWillMount() {
+    componentDidMount() {
+        
+        const auth = 'Token '+this.props.token
 
         if (this.props.isAuthenticated) {
-            fetch('https://demo4370489.mockable.io/api/snippets', {
-                haders: {
-                    'Authorization': this.props.token
+            fetch('https://ec2-52-57-177-201.eu-central-1.compute.amazonaws.com/api/snippets/', {
+                headers: {
+                    'Authorization': auth
                 }
             }).then(res => {
                 if (res.ok) {
@@ -161,22 +171,18 @@ class Mazegame extends React.Component {
                 }
                 throw new Error('not valid authorization token');
             }).then(rez => {
+                
                 if (rez.code.length !== 0) {
                     this.setState({code: rez.code, userType: 2})
                 }
-                console.log(this.state)
 
             }).catch(error => console.log('There has been a problem with your fetch operation: ' + error.message));
         }
-    }
 
-      /*    componentDidMount() {
         const cm = this.refs.editor.getCodeMirror();
-        const {width, height} = {width: 440, height: 450};
-        // set width & height
+        const {width, height} = {width: 440, height: 460};
         cm.setSize(width, height);
-    }*/
-
+    }
 
     render() {
 
@@ -200,18 +206,18 @@ class Mazegame extends React.Component {
                         color: '#00bcd4',
                         textAlign: 'center'
                     }}>
-                        A<span style={{
+                        A <span style={{
                 fontWeight: 'bold'
             }}>
                             maze
-                        </span>is a path or collection of paths, typically from an entrance to a goal.
+                        </span> is a path or collection of paths, typically from an entrance to a goal.
                     </h4>
                 </Col>
-                <Col md={5}>
+                <Col md={6}>
                     <br/>
                     <MazeCanvas/>
                 </Col>
-                <Col md={7}>
+                <Col md={6}>
                     <br/>
                     <div
                         style={{

@@ -46,21 +46,22 @@ class Signup extends Component {
 
     handleRegister(e) {
         e.preventDefault;
-        fetch('https://demo4370489.mockable.io/api/users', {
-            method: 'post',
+        const payload = { 
+            username: this.state.nickname, 
+            password: this.state.pw, 
+            email: this.state.email,
+            first_name: this.state.firstname,
+            last_name: this.state.lastname
+        }
+
+        fetch('https://ec2-52-57-177-201.eu-central-1.compute.amazonaws.com/api/users/', {
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({
-                username: this.state.username, 
-                password: this.state.admin, 
-                email: this.state.email,
-                first_name: this.state.firstname,
-                last_name: this.state.lastname,
-                })
-            })
+            body: JSON.stringify(payload)
+        })
             .then(res => { 
-
                 if (res.ok) {
                     return res.json()
                 } 
@@ -70,7 +71,9 @@ class Signup extends Component {
                         <h4 style={{ color: '#F44336'}}>Registration unsuccessful!</h4>
                     </Col>
                 )
+
                 this.setState({ resmsg: item})
+                
                 throw new Error('Failed registration');
             })
             .then(res => {
@@ -82,11 +85,13 @@ class Signup extends Component {
                 )
                 this.setState({ resmsg: item})
             }
-        )
+        ).catch(error => console.log('There has been a problem with your fetch operation: ' + error.message));
+
     }
 
 
     render() {
+
         return (
             <div>
                 <Col
@@ -112,7 +117,7 @@ class Signup extends Component {
                             onChange={this.handleEmail.bind(this)}
                         />
                         <br/>
-                        <TextField floatingLabelText="Password" type='password' onChange={this.handlePassword.bind(this)}/>
+                        <TextField floatingLabelText="Password" type='password' onChange={this.handlePassword.bind(this)} />
                     </div>
                 </Col>
                 <Col md={1} mdOffset={3} style={{ marginTop: 20}}>

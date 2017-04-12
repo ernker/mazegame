@@ -3,7 +3,6 @@ import {connect} from "react-redux";
 import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
 import FlatButton from 'material-ui/FlatButton';
-import RaisedButton from 'material-ui/RaisedButton';
 import {getStyles} from 'material-ui/AppBar/AppBar';
 import MenuItem from 'material-ui/MenuItem';
 import { Link } from 'react-router-dom';

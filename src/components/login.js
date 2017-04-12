@@ -22,14 +22,19 @@ class Login extends Component {
     
     
     handleClick(e) {
-        e.preventDefault
-        console.log(this.state.username, this.state.password)
-        fetch('https://demo4370489.mockable.io/api/tokens/', {
-            method: 'post',
-            headers: {
+        e.preventDefault;
+        
+        const credentials = {
+            username : this.state.username,
+            password: this.state.password
+        }
+
+        fetch('https://ec2-52-57-177-201.eu-central-1.compute.amazonaws.com/api/tokens/', {
+            method: 'POST',
+            headers: { 
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({username: this.state.username, password: this.state.admin})
+            body: JSON.stringify(credentials)
             })
             .then(res => { 
                 if (res.ok) {
@@ -46,7 +51,7 @@ class Login extends Component {
             .then(res => {
                 this.props.dispatch(actionToken(res.token));
                 this.props.history.push('/mazegame')
-            })
+            }).catch(error => console.log('There has been a problem with your fetch operation: ' + error.message));
     }
 
     handleUsername(e) {
