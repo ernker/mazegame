@@ -122,7 +122,7 @@ class Mazegame extends React.Component {
 
             fetch('https://2hard4u.eu/api/snippets/', {
                 method: 'PUT',
-                haders: {
+                headers: {
                     'Authorization': auth,
                     'Content-Type': 'application/json'
                 },
