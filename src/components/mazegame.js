@@ -4,7 +4,6 @@ import {Col} from 'react-bootstrap'
 import {actionDrawMaze, actionNextMaze} from "../action/action";
 import MazeCanvas from "./mazecanvas";
 import RaisedButton from 'material-ui/RaisedButton';
-import {BrowserRouter as Router} from 'react-router-dom';
 import If from '../lib/if.js';
 import CodeMirror from 'react-codemirror';
 import 'codemirror/lib/codemirror.css';
@@ -62,19 +61,18 @@ class Mazegame extends React.Component {
 
     handleSubmitCode(e) {
         e.preventDefault
-
-        if (this.state.userType == 1) {
+        if (this.state.userType === 1) {
 
             const payload = {
                 code: this.state.codearea,
                 language: 'python'
             }
 
-            const auth = 'Token '+this.props.token
+            const auth = 'Token ' + this.props.token
 
             fetch('https://www.2hard4u.eu/api/snippets/', {
                 method: 'POST',
-                haders: {
+                headers: {
                     'Authorization': auth,
                     'Content-Type': 'application/json'
                 },
@@ -85,8 +83,11 @@ class Mazegame extends React.Component {
                 }
 
                 const item = (
-                     <Col md={6}>                
-                        <h4 style={{ color: '#F44336'}}>Submission failed</h4>
+                    <Col md={6}>
+                        <h4
+                            style={{
+                            color: '#F44336'
+                        }}>Submission failed</h4>
                     </Col>
                 )
 
@@ -95,15 +96,18 @@ class Mazegame extends React.Component {
                 throw new Error('internal server error');
             }).then(rez => {
                 if (rez.code.length !== 0) {
-                    this.setState({ code: rez.code, userType: 2})
+                    this.setState({code: rez.code, userType: 2})
                 }
 
-                 const item = (
-                     <Col md={6}>                
-                        <h4 style={{ color: '#1B5E20'}}>Submission successful</h4>
+                const item = (
+                    <Col md={6}>
+                        <h4
+                            style={{
+                            color: '#1B5E20'
+                        }}>Submission successful</h4>
                     </Col>
                 )
-                this.setState({ respmsg: item})
+                this.setState({respmsg: item})
 
             }).catch(error => console.log('There has been a problem with your fetch operation: ' + error.message));
 
@@ -114,7 +118,7 @@ class Mazegame extends React.Component {
                 language: 'python'
             }
 
-            const auth = 'Token '+this.props.token
+            const auth = 'Token ' + this.props.token
 
             fetch('https://www.2hard4u.eu/api/snippets/', {
                 method: 'PUT',
@@ -129,8 +133,11 @@ class Mazegame extends React.Component {
                 }
 
                 const item = (
-                     <Col md={6}>                
-                        <h4 style={{ color: '#F44336'}}>Submission failed</h4>
+                    <Col md={6}>
+                        <h4
+                            style={{
+                            color: '#F44336'
+                        }}>Submission failed</h4>
                     </Col>
                 )
 
@@ -144,12 +151,15 @@ class Mazegame extends React.Component {
                 }
 
                 const item = (
-                     <Col md={6}>                
-                        <h4 style={{ color: '#1B5E20'}}>Submission successful</h4>
+                    <Col md={6}>
+                        <h4
+                            style={{
+                            color: '#1B5E20'
+                        }}>Submission successful</h4>
                     </Col>
                 )
-                
-                this.setState({ respmsg: item})
+
+                this.setState({respmsg: item})
 
             }).catch(error => console.log('There has been a problem with your fetch operation: ' + error.message));
         }
@@ -157,8 +167,8 @@ class Mazegame extends React.Component {
     }
 
     componentDidMount() {
-        
-        const auth = 'Token '+this.props.token
+
+        const auth = 'Token ' + this.props.token
 
         if (this.props.isAuthenticated) {
             fetch('https://www.2hard4u.eu/api/snippets/', {
@@ -171,7 +181,7 @@ class Mazegame extends React.Component {
                 }
                 throw new Error('not valid authorization token');
             }).then(rez => {
-                
+
                 if (rez.code.length !== 0) {
                     this.setState({code: rez.code, userType: 2})
                 }
@@ -179,15 +189,21 @@ class Mazegame extends React.Component {
             }).catch(error => console.log('There has been a problem with your fetch operation: ' + error.message));
         }
 
-        const cm = this.refs.editor.getCodeMirror();
-        const {width, height} = {width: 440, height: 460};
+        const cm = this
+            .refs
+            .editor
+            .getCodeMirror();
+        const {width, height} = {
+            width: 440,
+            height: 460
+        };
         cm.setSize(width, height);
     }
 
     render() {
 
         const options = {
-             mode: {
+            mode: {
                 name: "python",
                 version: 2,
                 singleLineStringErrors: false
@@ -206,11 +222,14 @@ class Mazegame extends React.Component {
                         color: '#00bcd4',
                         textAlign: 'center'
                     }}>
-                        A <span style={{
-                fontWeight: 'bold'
-            }}>
+                        A
+                        <span
+                            style={{
+                            fontWeight: 'bold'
+                        }}>
                             maze
-                        </span> is a path or collection of paths, typically from an entrance to a goal.
+                        </span>
+                        is a path or collection of paths, typically from an entrance to a goal.
                     </h4>
                 </Col>
                 <Col md={6}>
