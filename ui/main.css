@@ -1,0 +1,87 @@
+body {
+  padding: 0px;
+  overflow-x: hidden;
+}
+
+.clouds {
+  top: 0px;
+  z-index: 10;
+
+}
+
+.cloud {
+  -webkit-animation: clouds 60s infinite linear;
+  -moz-animation: clouds 60s infinite linear;
+  -ms-animation: clouds 60s infinite linear;
+  -o-animation: clouds 60s infinite linear;
+  animation: clouds 60s infinite linear;
+  position: relative;
+}
+
+.cloud-1 {
+  animation-duration: 20s;
+  -moz-transform: scale(0.3, 0.3);
+  -ms-transform: scale(0.3, 0.3);
+  -webkit-transform: scale(0.3, 0.3);
+  transform: scale(0.3, 0.3);
+}
+
+.cloud-2 {
+  margin-top: -100px;
+  animation-duration: 22s;
+  -moz-transform: scale(0.2, 0.2);
+  -ms-transform: scale(0.2, 0.2);
+  -webkit-transform: scale(0.2, 0.2);
+  transform: scale(0.2, 0.2);
+}
+
+.cloud-3 {
+  animation-duration: 23s;
+  margin-top: -110px;
+  -moz-transform: scale(0.45, 0.45);
+  -ms-transform: scale(0.45, 0.45);
+  -webkit-transform: scale(0.45, 0.45);
+  transform: scale(0.45, 0.45);
+}
+
+.cloud-4 {
+  animation-duration: 24s;
+  margin-top: -110px;
+  -moz-transform: scale(0.4, 0.4);
+  -ms-transform: scale(0.4, 0.4);
+  -webkit-transform: scale(0.4, 0.4);
+  transform: scale(0.4, 0.4);
+}
+
+@-webkit-keyframes clouds {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 120%;
+  }
+}
+@-moz-keyframes clouds {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 120%;
+  }
+}
+@-ms-keyframes clouds {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 120%;
+  }
+}
+@keyframes clouds {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 120%;
+  }
+}
