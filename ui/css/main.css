@@ -1,15 +1,26 @@
+@font-face {
+  font-family: 'topaz-new';
+  src: url('fonts/Topaznew.ttf') format('truetype');
+}
 body {
-  font-family: 'Russo One', sans-serif;
+  font-family: 'topaz-new', 'Russo One', sans-serif;
+  background-image: url('../img/tile-ground.png');
+  background-repeat: repeat;
+}
+a {
+  color: #FFF;
+}
+a:hover {
+  text-decoration: none;
 }
 
 img {
-  max-width: 100%;
   height: auto;
 }
 
 .clouds {
   top: 0px;
-  z-index: 10;
+  z-index: 2;
 
 }
 
@@ -89,63 +100,80 @@ img {
     left: 120%;
   }
 }
+.container {
+  min-height: 1200px;
+  width: 100%;
+  min-width: 1920px;
+  margin: 0px auto;
+  overflow: hidden;
+  padding-bottom: 75px;
+  padding-top: 75px;
+}
+.innerContainer {
+  background: #FFF;
+  width: 1920px;
+  margin: 0  auto 0 auto;
+  padding:0px 15px 0px 15px;
+  overflow: hidden;
+}
 
 .menu {
-
-  background-image: url('./the.png');
+  background-image: url('../img/the.png');
   background-repeat: no-repeat;
-  background-size: 230px 230px;
-  margin-top: 10px;
-  background-position-x: center;
-  background-position-y: center;
-  height: 250px;
-  float: left;
-
-}
-
-
-.rules {
-  background-repeat: no-repeat;
-  background-size: 230px 230px;
-  margin-top: 10px;
-  background-position-x: 90%;
-  height: 250px;
-  float: left;
-}
-
-
-.play {
-
-  background-image: url('./High-score.png');
-  background-repeat: no-repeat;
-  background-size: 250px;
-  height: 55px;
-  float: left;
-  background-position-x: center;
-  background-position-y: center;
-
-}
-
-.score {
-
-  background-image: url('./High-score.png');
-  background-repeat: no-repeat;
-  background-size: 250px;
-  height: 55px;
-  float: left;
+  padding:0px;
+  padding-top: 350px;
   background-position-x: center;
   background-position-y: top;
+  min-height: 350px;
 
 }
+.menu-part {
+  min-height:760px;
+}
 
-.texture {
-  background-image: url('./tile-ground.png');
-  background-repeat: repeat;
-  background-size: 50px 50px;
-  height: 300px;
-  margin-bottom: 10px;
+.menu-buttons {
+  text-align: center;
 }
 
 .menu-button {
-  text-align: right;
+  background: #000;
+  font-size: 60px;
+  padding: 3px;
+  color: #FFF;
+  width: 400px;
+  margin: 5px auto;
+  display: block;
+}
+.menu-button:hover {
+  color: #CCC;
+}
+
+.rules {
+  background: url("../img/stripe.png");
+  width:800px;
+  height: 600px;
+  padding: 25px;
+  margin: 0px auto;
+}
+
+.rules-text {
+  background: #FFF;
+  padding: 20px;
+  min-height:100%;
+}
+.body {
+  min-height: 800px;
+  padding: 10px;
+}
+
+.footer {
+
+}
+
+.high-score-tab {
+  margin: 0 auto;
+  width: 294px;
+  height: 131px;
+  background: url("../img/high-score-tab.png");
+  display: block;
 }

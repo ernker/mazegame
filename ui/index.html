@@ -8,75 +8,120 @@
         crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
         crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="main.css">
-    <link rel="stylesheet" type="text/css" href="navigation.css">
+    <link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
+    <link rel="stylesheet" type="text/css" href="css/main.css">
     <link href="https://fonts.googleapis.com/css?family=Russo+One" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g="
         crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
+
+
+    <link rel="stylesheet" href="css/modernizr.css"> <!-- Resource style -->
+    <script src="js/modernizr.js"></script> <!-- Modernizr -->
 </head>
 
 <body>
+    <nav>
+        <ul class="cd-primary-nav">
+            <li><a href="#0">The team</a></li>
+            <li><a href="#0">Our services</a></li>
+            <li><a href="#0">Our projects</a></li>
+            <li><a href="#0">Start a project</a></li>
+            <li><a href="#0">Join In</a></li>
+            <li><a href="#0">Create an account</a></li>
+        </ul>
+    </nav>
+
     <div class='container'>
-        <div class='row'>
-            <div class='col-sm-12 clouds'>
-                <div class='cloud cloud-1'>
-                    <img src='./cloud.png'>
+
+
+            <div class="cd-overlay-nav">
+                <span></span>
+            </div> <!-- cd-overlay-nav -->
+
+            <div class="cd-overlay-content">
+                <span></span>
+            </div> <!-- cd-overlay-content -->
+
+
+
+        <div class='innerContainer'>
+            <div class='row top-nav-bar'>
+                <div class='col-sm-12 clouds'>
+                    <div class='cloud cloud-1'>
+                        <img src='img/cloud.png'>
+                    </div>
+                    <div class='cloud cloud-2'>
+                        <img src='img/cloud.png'>
+                    </div>
+                    <div class='cloud cloud-3'>
+                        <img src='img/cloud.png'>
+                    </div>
+                    <div class='cloud cloud-4'>
+                        <img src='img/cloud.png'>
+                    </div>
                 </div>
-                <div class='cloud cloud-2'>
-                    <img src='./cloud.png'>
-                </div>
-                <div class='cloud cloud-3'>
-                    <img src='./cloud.png'>
-                </div>
-                <div class='cloud cloud-4'>
-                    <img src='./cloud.png'>
+                <div class='col-sm-12'>
+                    <a href="#0" class="cd-nav-trigger">Menu<span class="cd-icon"></span></a>
                 </div>
             </div>
-            <div class='col-sm-12 menu-button'>
-                <img src="./show-menu-icon.png" alt="icon" height="50px" width="50px">
+            <div class="row menu-part">
+                <div class='col-sm-6 menu'>
+                    <div class='menu-buttons'>
+
+                        <a class='menu-button' href="#">play</a>
+                        <a class='menu-button' href="#">high score</a>
+                    </div>
+                </div>
+                <div class='col-sm-6'>
+                    <div class="rules">
+                        <div class="rules-text">
+                            <h2> Rules of the game</h2>
+                            <p>The Maze is square 2D matrix containing corridors(0), walls(1), an entry(2) and an exit(3). The bot can only
+                                move up(), down(), left() and right(). </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <img src="img/screen2.png">
+            </div>
+
+            <div class='row'>
+                <div class='col-sm-12 clouds'>
+                    <div class='cloud cloud-1'>
+                        <img src='img/cloud.png'>
+                    </div>
+                    <div class='cloud cloud-2'>
+                        <img src='img/cloud.png'>
+                    </div>
+                    <div class='cloud cloud-3'>
+                        <img src='img/cloud.png'>
+                    </div>
+                    <div class='cloud cloud-4'>
+                        <img src='img/cloud.png'>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row body">
+
+            </div>
+
+            <div class="row footer">
+                <a class="high-score-tab" href="#"></a>
             </div>
         </div>
-        <div class="row">
-            <div class='col-sm-6 menu'></div>
-            <div class='col-sm-6 rules'>
-                <h2> Rules of the game</h2>
-                <p>The Maze is square 2D matrix containing corridors(0), walls(1), an entry(2) and an exit(3). The bot can only
-                    move up(), down(), left() and right(). </p>
-            </div>
-            <div class='col-sm-6'>
-                <div class='row'>
-                    <div class='col-sm-12 play'></div>
-                    <div class='col-sm-12 score'></div>
-                </div>
-            </div>
-        </div>
+
+
     </div>
-    <div class='row'>
-        <div class='col-sm-12'>
-            <img src='./footer1.png'>
-        </div>
-    </div>
-    <div clas='row'>
-        <div class='col-sm-12 texture'></div>
-    </div>
-    <div class='row'>
-        <div class='col-sm-12 clouds'>
-            <div class='cloud cloud-1'>
-                <img src='./cloud.png'>
-            </div>
-            <div class='cloud cloud-2'>
-                <img src='./cloud.png'>
-            </div>
-            <div class='cloud cloud-3'>
-                <img src='./cloud.png'>
-            </div>
-            <div class='cloud cloud-4'>
-                <img src='./cloud.png'>
-            </div>
-        </div>
-    </div>
+
+
+    <script src="js/velocity.min.js"></script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>
