@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
         crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="main.css">
+    <link rel="stylesheet" type="text/css" href="navigation.css">
+    <link href="https://fonts.googleapis.com/css?family=Russo+One" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g="
         crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
@@ -16,7 +18,7 @@
 </head>
 
 <body>
-      <div class='container'>
+    <div class='container'>
         <div class='row'>
             <div class='col-sm-12 clouds'>
                 <div class='cloud cloud-1'>
@@ -32,25 +34,47 @@
                     <img src='./cloud.png'>
                 </div>
             </div>
+            <div class='col-sm-12 menu-button'>
+                <img src="./show-menu-icon.png" alt="icon" height="50px" width="50px">
+            </div>
         </div>
         <div class="row">
             <div class='col-sm-6 menu'></div>
-            <div class='col-sm-6 rules'></div>
+            <div class='col-sm-6 rules'>
+                <h2> Rules of the game</h2>
+                <p>The Maze is square 2D matrix containing corridors(0), walls(1), an entry(2) and an exit(3). The bot can only
+                    move up(), down(), left() and right(). </p>
+            </div>
             <div class='col-sm-6'>
                 <div class='row'>
                     <div class='col-sm-12 play'></div>
                     <div class='col-sm-12 score'></div>
-                    </div>
                 </div>
             </div>
         </div>
-        <div class='row'>
-            <div class='col-sm-12'>
-                <img src='./footer1.png'>
-            </div>
+    </div>
+    <div class='row'>
+        <div class='col-sm-12'>
+            <img src='./footer1.png'>
         </div>
-        <div clas='row'>
-            <div class='col-sm-12 texture'></div>
+    </div>
+    <div clas='row'>
+        <div class='col-sm-12 texture'></div>
+    </div>
+    <div class='row'>
+        <div class='col-sm-12 clouds'>
+            <div class='cloud cloud-1'>
+                <img src='./cloud.png'>
+            </div>
+            <div class='cloud cloud-2'>
+                <img src='./cloud.png'>
+            </div>
+            <div class='cloud cloud-3'>
+                <img src='./cloud.png'>
+            </div>
+            <div class='cloud cloud-4'>
+                <img src='./cloud.png'>
+            </div>
         </div>
     </div>
 </body>

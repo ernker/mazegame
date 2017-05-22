@@ -1,3 +1,6 @@
+body {
+  font-family: 'Russo One', sans-serif;
+}
 
 img {
   max-width: 100%;
@@ -108,11 +111,6 @@ img {
   background-position-x: 90%;
   height: 250px;
   float: left;
-  border: 10px solid transparent;
-  padding: 15px;
-  -webkit-border-image: url('./stripe.png') 30 round; /* Safari 3.1-5 */
-  -o-border-image: url('./stripe.png') 30 round; /* Opera 11-12.1 */
-  border-image: url('./stripe.png') 100 repeat;
 }
 
 
@@ -145,4 +143,9 @@ img {
   background-repeat: repeat;
   background-size: 50px 50px;
   height: 300px;
+  margin-bottom: 10px;
+}
+
+.menu-button {
+  text-align: right;
 }
