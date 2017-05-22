@@ -6,45 +6,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
         crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-        crossorigin="anonymous">
-    <link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
+    <link rel="stylesheet" href="css/reset.css">
+    <!-- CSS reset -->
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link href="https://fonts.googleapis.com/css?family=Russo+One" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g="
         crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-        crossorigin="anonymous"></script>
-
-
-    <link rel="stylesheet" href="css/modernizr.css"> <!-- Resource style -->
-    <script src="js/modernizr.js"></script> <!-- Modernizr -->
+    <link rel="stylesheet" href="css/modernizr.css">
+    <!-- Resource style -->
+    <script src="js/modernizr.js"></script>
+    <!-- Modernizr -->
 </head>
 
 <body>
     <nav>
         <ul class="cd-primary-nav">
-            <li><a href="#0">The team</a></li>
-            <li><a href="#0">Our services</a></li>
-            <li><a href="#0">Our projects</a></li>
-            <li><a href="#0">Start a project</a></li>
-            <li><a href="#0">Join In</a></li>
-            <li><a href="#0">Create an account</a></li>
+            <li><a href="#0">Sign in</a></li>
+            <li><a href="#0">Log in</a></li>
+            <li><a href="#0">Rules of the Game</a></li>
+            <li><a href="#0">Overview</a></li>
+            <li><a href="#0">Leader board</a></li>
         </ul>
     </nav>
 
     <div class='container'>
 
 
-            <div class="cd-overlay-nav">
-                <span></span>
-            </div> <!-- cd-overlay-nav -->
+        <div class="cd-overlay-nav">
+            <span></span>
+        </div>
+        <!-- cd-overlay-nav -->
 
-            <div class="cd-overlay-content">
-                <span></span>
-            </div> <!-- cd-overlay-content -->
-
-
+        <div class="cd-overlay-content">
+            <span></span>
+        </div>
+        <!-- cd-overlay-content -->
 
         <div class='innerContainer'>
             <div class='row top-nav-bar'>
@@ -75,15 +71,30 @@
                     </div>
                 </div>
                 <div class='col-sm-6'>
-                    <div class="rules">
-                        <div class="rules-text">
-                            <h2> Rules of the game</h2>
-                            <p>The Maze is square 2D matrix containing corridors(0), walls(1), an entry(2) and an exit(3). The bot can only
-                                move up(), down(), left() and right(). </p>
+                    <div class='row'>
+                        <div class="rules">
+                            <div class='col-sm-12'>
+                                <div class="rules-text">
+                                    <h1> Rules of the game</h1>
+                                    <br>
+                                    <br>
+                                    <p>The Maze is square 2D matrix containing corridors(0), walls(1), an entry(2) and an exit(3).
+                                        The bot can only move up(), down(), left() and right(). </p>
+                                </div>
+                            </div>
+                            <div class='col-sm-12'>
+                                <div class='rules-CS'>
+                                    <div class='row'>
+                                        <div class='col-sm-6 rules-CS-logo'></div>
+                                        <div class='col-sm-6 rules-CS-getmore'>
+                                            <a class='rules-menu-button' href='#'>give me more</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-
             </div>
 
             <div class="row">
@@ -116,11 +127,9 @@
                 <img class="screen2" src="./img/footer1.png">
             </div>
         </div>
-
-
     </div>
     <script>
-        window.smoothScroll = function(target) {
+        window.smoothScroll = function (target) {
             var scrollContainer = target;
             do { //find scroll container
                 scrollContainer = scrollContainer.parentNode;
@@ -134,10 +143,10 @@
                 targetY += target.offsetTop;
             } while (target = target.offsetParent);
 
-            scroll = function(c, a, b, i) {
+            scroll = function (c, a, b, i) {
                 i++; if (i > 30) return;
                 c.scrollTop = a + (b - a) / 30 * i;
-                setTimeout(function(){ scroll(c, a, b, i); }, 20);
+                setTimeout(function () { scroll(c, a, b, i); }, 20);
             }
             // start scrolling
             scroll(scrollContainer, scrollContainer.scrollTop, targetY, 0);

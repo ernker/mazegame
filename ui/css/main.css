@@ -2,8 +2,9 @@
   font-family: 'topaz-new';
   src: url('fonts/Topaznew.ttf') format('truetype');
 }
+
 body {
-  font-family: 'topaz-new', 'Russo One', sans-serif;
+  font-family: 'topaz-new';
   background: #FFF;
   margin:0px;
   padding: 0px;
@@ -32,7 +33,7 @@ img {
   -o-animation: clouds 60s infinite linear;
   animation: clouds 60s infinite linear;
   position: relative;
-}
+} 
 
 .cloud-1 {
   animation-duration: 50s;
@@ -110,7 +111,7 @@ img {
 .innerContainer {
   display: block;
   width:100%;
-  paddin:0px;
+  padding:0px;
   margin:0px;
   overflow: hidden;
 }
@@ -160,19 +161,50 @@ img {
   margin: 0px auto;
 }
 
+
 .rules-text {
+  
   background: #FFF;
-  padding: 20px;
+  padding: 30px;
   min-height:100%;
+  font-size: 30px;
+  color:#112211;
+
+}
+
+.rules-CS {
+  background: white;
+  height: 100%;
+}
+
+.rules-CS-logo {
+  background-image: url('../img/cloudsquaddraft5.png');
+  background-repeat: no-repeat;
+  background-size: 300px 250px;
+  background-position: center center;
+  height: 280px;
+
+}
+
+.rules-CS-getmore {
+  background: white;
+  height: 280px;
+  text-align: center center;
+
+}
+
+.rules-menu-button {
+
+  background: #000;
+  font-size: 30px;
+  padding: 10px;
+  color: #FFF;
+
 }
 
 .body {
   min-height: 800px;
   padding: 10px;
-}
-
-.footer {
-
 }
 
 .high-score-tab {
