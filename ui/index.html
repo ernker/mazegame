@@ -70,7 +70,7 @@
                 <div class='col-sm-6 menu'>
                     <div class='menu-buttons'>
 
-                        <a class='menu-button' href="#">play</a>
+                        <a class='menu-button' href="#" id="play" onclick="smoothScroll(document.getElementById('body'))">play</a>
                         <a class='menu-button' href="#">high score</a>
                     </div>
                 </div>
@@ -87,7 +87,7 @@
             </div>
 
             <div class="row">
-                <img src="img/screen2.png">
+                <img class='screen2' src="img/screen2.png">
             </div>
 
             <div class='row'>
@@ -107,18 +107,42 @@
                 </div>
             </div>
 
-            <div class="row body">
+            <div class="row body" id="body">
 
             </div>
 
             <div class="row footer">
                 <a class="high-score-tab" href="#"></a>
+                <img class="screen2" src="./img/footer1.png">
             </div>
         </div>
 
 
     </div>
+    <script>
+        window.smoothScroll = function(target) {
+            var scrollContainer = target;
+            do { //find scroll container
+                scrollContainer = scrollContainer.parentNode;
+                if (!scrollContainer) return;
+                scrollContainer.scrollTop += 1;
+            } while (scrollContainer.scrollTop == 0);
 
+            var targetY = 0;
+            do { //find the top of target relatively to the container
+                if (target == scrollContainer) break;
+                targetY += target.offsetTop;
+            } while (target = target.offsetParent);
+
+            scroll = function(c, a, b, i) {
+                i++; if (i > 30) return;
+                c.scrollTop = a + (b - a) / 30 * i;
+                setTimeout(function(){ scroll(c, a, b, i); }, 20);
+            }
+            // start scrolling
+            scroll(scrollContainer, scrollContainer.scrollTop, targetY, 0);
+        }
+    </script>
 
     <script src="js/velocity.min.js"></script>
     <script src="js/main.js"></script>

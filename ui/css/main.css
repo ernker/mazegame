@@ -4,8 +4,9 @@
 }
 body {
   font-family: 'topaz-new', 'Russo One', sans-serif;
-  background-image: url('../img/tile-ground.png');
-  background-repeat: repeat;
+  background: #FFF;
+  margin:0px;
+  padding: 0px;
 }
 a {
   color: #FFF;
@@ -101,20 +102,23 @@ img {
   }
 }
 .container {
-  min-height: 1200px;
-  width: 100%;
-  min-width: 1920px;
-  margin: 0px auto;
-  overflow: hidden;
-  padding-bottom: 75px;
-  padding-top: 75px;
+  min-width:100%;
+  padding: 0px;
+  display: block;
 }
+
 .innerContainer {
-  background: #FFF;
-  width: 1920px;
-  margin: 0  auto 0 auto;
-  padding:0px 15px 0px 15px;
+  display: block;
+  width:100%;
+  paddin:0px;
+  margin:0px;
   overflow: hidden;
+}
+.innerContainer .screen2{
+  min-width: 100%;
+  width: 100%;
+  height: auto;
+
 }
 
 .menu {
@@ -128,7 +132,7 @@ img {
 
 }
 .menu-part {
-  min-height:760px;
+  min-height:740px;
 }
 
 .menu-buttons {
@@ -150,7 +154,7 @@ img {
 
 .rules {
   background: url("../img/stripe.png");
-  width:800px;
+  width: 750px;
   height: 600px;
   padding: 25px;
   margin: 0px auto;
@@ -161,6 +165,7 @@ img {
   padding: 20px;
   min-height:100%;
 }
+
 .body {
   min-height: 800px;
   padding: 10px;
