@@ -174,7 +174,6 @@ img {
 
 .rules-CS {
   background: white;
-  height: 100%;
 }
 
 .rules-CS-logo {
@@ -183,14 +182,13 @@ img {
   background-size: 300px 250px;
   background-position: center center;
   height: 280px;
-
 }
 
 .rules-CS-getmore {
   background: white;
   height: 280px;
-  text-align: center center;
-
+  text-align: center;
+  padding-top: 70px;
 }
 
 .rules-menu-button {
@@ -201,6 +199,11 @@ img {
   color: #FFF;
 
 }
+
+.rules-menu-button:hover {
+  color: #CCC;
+}
+
 
 .body {
   min-height: 800px;
