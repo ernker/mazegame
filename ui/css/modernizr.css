@@ -117,7 +117,8 @@ Primary style
   transition-delay: 0.4s;
 }
 .cd-nav-trigger::after {
-  background-color: #CCC;
+  background-color: #ccc;
+
   -webkit-transform: scale(0);
   -moz-transform: scale(0);
   -ms-transform: scale(0);
@@ -293,7 +294,7 @@ Primary style
   z-index: 4;
 }
 .cd-overlay-content span {
-  background-color: #CCC;
+  background-color: white;
 }
 
 .cd-content {

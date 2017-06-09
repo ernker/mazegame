@@ -2,11 +2,13 @@
   font-family: 'topaz-new';
   src: url('fonts/Topaznew.ttf') format('truetype');
 }
+
 body {
-  font-family: 'topaz-new', 'Russo One', sans-serif;
+  font-family: 'topaz-new';
   background: #FFF;
   margin:0px;
   padding: 0px;
+
 }
 a {
   color: #FFF;
@@ -20,44 +22,48 @@ img {
 }
 
 .clouds {
-  top: 0px;
+  top: 5px;
   z-index: 2;
+  overflow: hidden;
 
+}
+.cloud-bar {
+  overflow: hidden;
 }
 
 .cloud {
-  -webkit-animation: clouds 60s infinite linear;
-  -moz-animation: clouds 60s infinite linear;
-  -ms-animation: clouds 60s infinite linear;
-  -o-animation: clouds 60s infinite linear;
-  animation: clouds 60s infinite linear;
+  -webkit-animation: clouds 5s infinite linear;
+  -moz-animation: clouds 5s infinite linear;
+  -ms-animation: clouds 5s infinite linear;
+  -o-animation: clouds 5s infinite linear;
+  animation: clouds 5s infinite linear;
   position: relative;
-}
+} 
 
 .cloud-1 {
   animation-duration: 50s;
-  -moz-transform: scale(0.3, 0.3);
-  -ms-transform: scale(0.3, 0.3);
-  -webkit-transform: scale(0.3, 0.3);
-  transform: scale(0.3, 0.3);
+  -moz-transform: scale(0.7, 0.7);
+  -ms-transform: scale(0.7, 0.7);
+  -webkit-transform: scale(0.7, 0.7);
+  transform: scale(0.7, 0.7);
 }
 
 .cloud-2 {
-  margin-top: -100px;
+  margin-top: -70px;
   animation-duration: 60s;
-  -moz-transform: scale(0.2, 0.2);
-  -ms-transform: scale(0.2, 0.2);
-  -webkit-transform: scale(0.2, 0.2);
-  transform: scale(0.2, 0.2);
+  -moz-transform: scale(0.6, 0.6);
+  -ms-transform: scale(0.6, 0.6);
+  -webkit-transform: scale(0.6, 0.6);
+  transform: scale(0.6, 0.6);
 }
 
 .cloud-3 {
   animation-duration: 70s;
-  margin-top: -110px;
-  -moz-transform: scale(0.45, 0.45);
-  -ms-transform: scale(0.45, 0.45);
-  -webkit-transform: scale(0.45, 0.45);
-  transform: scale(0.45, 0.45);
+  margin-top: -80px;
+  -moz-transform: scale(0.8, 0.8);
+  -ms-transform: scale(0.8, 0.8);
+  -webkit-transform: scale(0.8, 0.8);
+  transform: scale(0.8, 0.8);
 }
 
 .cloud-4 {
@@ -101,16 +107,50 @@ img {
     left: 120%;
   }
 }
+
 .container {
   min-width:100%;
   padding: 0px;
   display: block;
 }
+/*****************************/
+.cs-container {
+  /* this class is used to give a max-width to the element it is applied to, and center it horizontally when it reaches that max-width */
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.cs-container::after {
+  /* clearfix */
+  content: '';
+  display: table;
+  clear: both;
+}
 
+.cs-main-content {
+  /* you need to assign a min-height to the main content so that the children can inherit it*/
+  height: 100%;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.cs-scrolling-bg {
+  position: relative;
+  background-image: url('../img/clouds.png');
+  background-repeat: no-repeat;
+  min-height: 100%;
+  padding: 4em 0;
+  line-height: 1.6;
+  /*box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);*/
+  z-index: 2;
+}
+
+/*****************************/
 .innerContainer {
   display: block;
   width:100%;
-  paddin:0px;
+  padding:0px;
   margin:0px;
   overflow: hidden;
 }
@@ -125,10 +165,14 @@ img {
   background-image: url('../img/the.png');
   background-repeat: no-repeat;
   padding:0px;
-  padding-top: 350px;
+  padding-top: 400px;
   background-position-x: center;
-  background-position-y: top;
-  min-height: 350px;
+  background-position-y: 70px;
+  min-height: 250px;
+  -moz-transform: scale(0.9, 0.9);
+  -ms-transform: scale(0.9, 0.9);
+  -webkit-transform: scale(0.9, 0.9);
+  transform: scale(0.9, 0.9);
 
 }
 .menu-part {
@@ -141,10 +185,10 @@ img {
 
 .menu-button {
   background: #000;
-  font-size: 60px;
+  font-size: 30px;
   padding: 3px;
   color: #FFF;
-  width: 400px;
+  width: 200px;
   margin: 5px auto;
   display: block;
 }
@@ -155,24 +199,54 @@ img {
 .rules {
   background: url("../img/stripe.png");
   width: 750px;
-  height: 600px;
+  height: auto;
   padding: 25px;
   margin: 0px auto;
 }
 
+
 .rules-text {
+
   background: #FFF;
-  padding: 20px;
+  padding: 30px;
   min-height:100%;
+  font-size: 30px;
+  color:#112211;
+
+}
+
+.rules-CS {
+  background: white;
+  height: 100%;
+}
+
+.rules-CS-logo {
+  background-image: url('../img/cloudsquaddraft5.png');
+  background-repeat: no-repeat;
+  background-size: 150px;
+  background-position: left center;
+  height: 150px;
+
+}
+
+.rules-CS-getmore {
+  background: white;
+  height: 150px;
+  text-align: center;
+}
+
+.rules-menu-button {
+
+  background: #000;
+  font-size: 30px;
+  padding: 10px;
+  color: #FFF;
+
 }
 
 .body {
   min-height: 800px;
   padding: 10px;
-}
-
-.footer {
-
 }
 
 .high-score-tab {
@@ -181,4 +255,5 @@ img {
   height: 131px;
   background: url("../img/high-score-tab.png");
   display: block;
+
 }
