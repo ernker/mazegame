@@ -1,13 +1,21 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">        
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/modernizr.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g="
+        crossorigin="anonymous"></script>
+    <script src="js/modernizr.js"></script>
+    <!-- Modernizr -->
     <script src="skulpt.min.js" type="text/javascript"></script>
     <script src="skulpt-stdlib.js" type="text/javascript"></script>
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <!--
       Notice the use of %PUBLIC_URL% in the tag above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -19,9 +27,21 @@
     -->
     <title>Maze</title>
 </head>
+
 <body>
-<div id="root"></div>
-<!--
+    
+    <nav>
+        <ul class="cd-primary-nav">
+            <li><a href="#0">Sign in</a></li>
+            <li><a href="#0">Log in</a></li>
+            <li><a href="#0">Rules of the Game</a></li>
+            <li><a href="#0">Overview</a></li>
+            <li><a href="#0">Leader board</a></li>
+        </ul>
+    </nav>
+    
+    <div id="root"></div>
+    <!--
   This HTML file is a template.
   If you open it directly in the browser, you will see an empty page.
 
@@ -32,40 +52,67 @@
   To create a production bundle, use `npm run build`.
 -->
 
-<script>
-    function outf(text) {
-        let mypre = document.getElementById('output');
-        mypre.innerHTML += text + '<br />';
-    }
-    function builtinRead(x) {
-        if (Sk.builtinFiles === undefined || Sk.builtinFiles["files"][x] === undefined)
-            throw "File not found: '" + x + "'";
-        return Sk.builtinFiles["files"][x];
-    }
-    // Here's everything you need to run a python program in skulpt
-    // grab the code from your textarea
-    // get a reference to your pre element for output
-    // configure the output function
-    // call Sk.importMainWithBody()
-    window.runCode = function (prog) {
-        let mypre = document.getElementById('output');
-        mypre.innerHTML = '';
+    <script>
+        function outf(text) {
+            let mypre = document.getElementById('output');
+            mypre.innerHTML += text + '<br />';
+        }
+        function builtinRead(x) {
+            if (Sk.builtinFiles === undefined || Sk.builtinFiles["files"][x] === undefined)
+                throw "File not found: '" + x + "'";
+            return Sk.builtinFiles["files"][x];
+        }
+        // Here's everything you need to run a python program in skulpt
+        // grab the code from your textarea
+        // get a reference to your pre element for output
+        // configure the output function
+        // call Sk.importMainWithBody()
+        window.runCode = function (prog) {
+            let mypre = document.getElementById('output');
+            mypre.innerHTML = '';
 
-        Sk.externalLibraries = {
-            maze: {
-                path: './maze/__init__.js'
+            Sk.externalLibraries = {
+                maze: {
+                    path: './maze/__init__.js'
+                }
+            };
+            Sk.configure({ output: outf, read: builtinRead });
+            let myPromise = Sk.misceval.asyncToPromise(function () {
+                return Sk.importMainWithBody("<stdin>", false, "from maze import Maze\n\nmaze = Maze()\n\n" + prog, true);
+            });
+            return myPromise.then(function (mod) {
+                mypre.innerHTML += 'Total moves: ' + (window.Maze.getHistory().length - 1) + '<br />';
+            }, function (err) {
+                mypre.innerHTML = err.toString();
+            });
+        }
+
+        window.smoothScroll = function (target) {
+            var scrollContainer = target;
+            do { //find scroll container
+                scrollContainer = scrollContainer.parentNode;
+                if (!scrollContainer) return;
+                scrollContainer.scrollTop += 1;
+            } while (scrollContainer.scrollTop == 0);
+
+            var targetY = 0;
+            do { //find the top of target relatively to the container
+                if (target == scrollContainer) break;
+                targetY += target.offsetTop;
+            } while (target = target.offsetParent);
+
+            scroll = function (c, a, b, i) {
+                i++; if (i > 30) return;
+                c.scrollTop = a + (b - a) / 30 * i;
+                setTimeout(function () { scroll(c, a, b, i); }, 20);
             }
-        };
-        Sk.configure({output: outf, read: builtinRead});
-        let myPromise = Sk.misceval.asyncToPromise(function () {
-            return Sk.importMainWithBody("<stdin>", false, "from maze import Maze\n\nmaze = Maze()\n\n" + prog, true);
-        });
-        return myPromise.then(function (mod) {
-            mypre.innerHTML += 'Total moves: ' + (window.Maze.getHistory().length - 1) + '<br />';
-        }, function (err) {
-            mypre.innerHTML = err.toString();
-        });
-    }
-</script>
+            // start scrolling
+            scroll(scrollContainer, scrollContainer.scrollTop, targetY, 0);
+        }
+    </script>
+
+    <script src="js/velocity.min.js"></script>
+    <script src="js/main.js"></script>
 </body>
+
 </html>

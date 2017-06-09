@@ -1,0 +1,220 @@
+@font-face {
+  font-family: 'topaz-new';
+  src: url('fonts/Topaznew.ttf') format('truetype');
+}
+
+body {
+  font-family: 'topaz-new';
+  background: #FFF;
+  margin:0px;
+  padding: 0px;
+}
+a {
+  color: #FFF;
+}
+a:hover {
+  text-decoration: none;
+}
+
+img {
+  height: auto;
+}
+
+.clouds {
+  top: 0px;
+  z-index: 2;
+
+}
+
+.cloud {
+  -webkit-animation: clouds 60s infinite linear;
+  -moz-animation: clouds 60s infinite linear;
+  -ms-animation: clouds 60s infinite linear;
+  -o-animation: clouds 60s infinite linear;
+  animation: clouds 60s infinite linear;
+  position: relative;
+} 
+
+.cloud-1 {
+  animation-duration: 50s;
+  -moz-transform: scale(0.3, 0.3);
+  -ms-transform: scale(0.3, 0.3);
+  -webkit-transform: scale(0.3, 0.3);
+  transform: scale(0.3, 0.3);
+}
+
+.cloud-2 {
+  margin-top: -100px;
+  animation-duration: 60s;
+  -moz-transform: scale(0.2, 0.2);
+  -ms-transform: scale(0.2, 0.2);
+  -webkit-transform: scale(0.2, 0.2);
+  transform: scale(0.2, 0.2);
+}
+
+.cloud-3 {
+  animation-duration: 70s;
+  margin-top: -110px;
+  -moz-transform: scale(0.45, 0.45);
+  -ms-transform: scale(0.45, 0.45);
+  -webkit-transform: scale(0.45, 0.45);
+  transform: scale(0.45, 0.45);
+}
+
+.cloud-4 {
+  animation-duration: 80s;
+  margin-top: -110px;
+  -moz-transform: scale(0.4, 0.4);
+  -ms-transform: scale(0.4, 0.4);
+  -webkit-transform: scale(0.4, 0.4);
+  transform: scale(0.4, 0.4);
+}
+
+@-webkit-keyframes clouds {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 120%;
+  }
+}
+@-moz-keyframes clouds {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 120%;
+  }
+}
+@-ms-keyframes clouds {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 120%;
+  }
+}
+@keyframes clouds {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 120%;
+  }
+}
+.container {
+  min-width:100%;
+  padding: 0px;
+  display: block;
+}
+
+.innerContainer {
+  display: block;
+  width:100%;
+  padding:0px;
+  margin:0px;
+  overflow: hidden;
+}
+.innerContainer .screen2{
+  min-width: 100%;
+  width: 100%;
+  height: auto;
+
+}
+
+.menu {
+  background-image: url('../img/the.png');
+  background-repeat: no-repeat;
+  padding:0px;
+  padding-top: 350px;
+  background-position-x: center;
+  background-position-y: top;
+  min-height: 350px;
+
+}
+.menu-part {
+  min-height:740px;
+}
+
+.menu-buttons {
+  text-align: center;
+}
+
+.menu-button {
+  background: #000;
+  font-size: 60px;
+  padding: 3px;
+  color: #FFF;
+  width: 400px;
+  margin: 5px auto;
+  display: block;
+}
+.menu-button:hover {
+  color: #CCC;
+}
+
+.rules {
+  background: url("../img/stripe.png");
+  width: 750px;
+  height: 600px;
+  padding: 25px;
+  margin: 0px auto;
+}
+
+
+.rules-text {
+  
+  background: #FFF;
+  padding: 30px;
+  min-height:100%;
+  font-size: 30px;
+  color:#112211;
+
+}
+
+.rules-CS {
+  background: white;
+}
+
+.rules-CS-logo {
+  background-image: url('../img/cloudsquaddraft5.png');
+  background-repeat: no-repeat;
+  background-size: 300px 250px;
+  background-position: center center;
+  height: 280px;
+}
+
+.rules-CS-getmore {
+  background: white;
+  height: 280px;
+  text-align: center;
+  padding-top: 70px;
+}
+
+.rules-menu-button {
+
+  background: #000;
+  font-size: 30px;
+  padding: 10px;
+  color: #FFF;
+
+}
+
+.rules-menu-button:hover {
+  color: #CCC;
+}
+
+
+.body {
+  
+  min-height: 700px;
+  padding: 10px;
+}
+
+.high-score-tab {
+  margin: 0 auto;
+  width: 294px;
+  height: 131px;
+  background: url("../img/high-score-tab.png");
+  display: block;
+}

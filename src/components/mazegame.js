@@ -8,6 +8,7 @@ import If from '../lib/if.js';
 import CodeMirror from 'react-codemirror';
 import 'codemirror/lib/codemirror.css';
 import 'codemirror/mode/python/python';
+import "./index.css";
 
 class Mazegame extends React.Component {
 
@@ -216,23 +217,7 @@ class Mazegame extends React.Component {
 
         return (
             <div>
-                <Col md={12}>
-                    <h4
-                        style={{
-                        color: '#00bcd4',
-                        textAlign: 'center'
-                    }}>
-                        A
-                        <span
-                            style={{
-                            fontWeight: 'bold'
-                        }}>
-                            maze
-                        </span>
-                        is a path or collection of paths, typically from an entrance to a goal.
-                    </h4>
-                </Col>
-                <Col md={6}>
+                <Col md={6} style={{ textAlign: 'center'}}>
                     <br/>
                     <MazeCanvas/>
                 </Col>
