@@ -246,14 +246,14 @@ class Mazegame extends React.Component {
                         .bind(this)}/>
                     <span></span>
                     <RaisedButton
-                        label='NEXT MAZE'
+                        label='NEXT'
                         onTouchTap={this
                         .handleNextMazeClick
                         .bind(this)}/>
                     <span></span>
                     <If cond={this.props.isAuthenticated}>
                         <RaisedButton
-                            label="SUBMIT CODE"
+                            label="SUBMIT"
                             onTouchTap={this
                             .handleSubmitCode
                             .bind(this)}/>
