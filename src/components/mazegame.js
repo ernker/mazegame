@@ -60,7 +60,7 @@ class Mazegame extends React.Component {
     }
 
     handleSubmitCode(e) {
-        e.preventDefault
+        e.preventDefault;
         if (this.state.userType === 1) {
 
             const payload = {
@@ -214,24 +214,10 @@ class Mazegame extends React.Component {
             matchBrackets: true
         }
 
+        console.log(this.props)
+
         return (
             <div>
-                <Col md={12}>
-                    <h4
-                        style={{
-                        color: '#00bcd4',
-                        textAlign: 'center'
-                    }}>
-                        A
-                        <span
-                            style={{
-                            fontWeight: 'bold'
-                        }}>
-                            maze
-                        </span>
-                        is a path or collection of paths, typically from an entrance to a goal.
-                    </h4>
-                </Col>
                 <Col md={6}>
                     <br/>
                     <MazeCanvas/>

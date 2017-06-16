@@ -1,71 +1,94 @@
-<!doctype html>
-<html lang="en">
-<head>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>The MAZE game</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap-theme.min.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Description" CONTENT="">
+	<meta name="author" content="">
+	<meta name="keywords" content="">
+    <meta name="robots" content="index,nofollow,noimageindex">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" href="css/modernizr.css">
+    <link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Russo+One" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integritvy="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous"></script>
+    <script src="js/modernizr.js"></script>
     <script src="skulpt.min.js" type="text/javascript"></script>
     <script src="skulpt-stdlib.js" type="text/javascript"></script>
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <!--
-      Notice the use of %PUBLIC_URL% in the tag above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+  </head>
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>Maze</title>
-</head>
 <body>
-<div id="root"></div>
-<!--
-  This HTML file is a template.
-  If you open it directly in the browser, you will see an empty page.
+    <!--<div class='cd-primary-nav'>
+        <div class='cd-content'>
+            <h1>Rules of the game<h1>
+        </div>
+    </div>
+    <a href="#" class="cd-nav-trigger">Menu<span class="cd-icon"></span></a>-->
+   
+    <div id='root'></div>
 
-  You can add webfonts, meta tags, or analytics to this file.
-  The build step will place the bundled scripts into the <body> tag.
+    <script src="js/velocity.min.js"></script>
+    <script src="js/main.js"></script>
+    <script>
 
-  To begin the development, run `npm start`.
-  To create a production bundle, use `npm run build`.
--->
+        function outf(text) {
+            let mypre = document.getElementById('output');
+            mypre.innerHTML += text + '<br />';
+        }
+        
+        function builtinRead(x) {
+            if (Sk.builtinFiles === undefined || Sk.builtinFiles["files"][x] === undefined)
+                throw "File not found: '" + x + "'";
+            return Sk.builtinFiles["files"][x];
+        }
+        // Here's everything you need to run a python program in skulpt
+        // grab the code from your textarea
+        // get a reference to your pre element for output
+        // configure the output function
+        // call Sk.importMainWithBody()
+        window.runCode = function (prog) {
+            let mypre = document.getElementById('output');
+            mypre.innerHTML = '';
 
-<script>
-    function outf(text) {
-        let mypre = document.getElementById('output');
-        mypre.innerHTML += text + '<br />';
-    }
-    function builtinRead(x) {
-        if (Sk.builtinFiles === undefined || Sk.builtinFiles["files"][x] === undefined)
-            throw "File not found: '" + x + "'";
-        return Sk.builtinFiles["files"][x];
-    }
-    // Here's everything you need to run a python program in skulpt
-    // grab the code from your textarea
-    // get a reference to your pre element for output
-    // configure the output function
-    // call Sk.importMainWithBody()
-    window.runCode = function (prog) {
-        let mypre = document.getElementById('output');
-        mypre.innerHTML = '';
+            Sk.externalLibraries = {
+                maze: {
+                    path: './maze/__init__.js'
+                }
+            };
+            Sk.configure({output: outf, read: builtinRead});
+            let myPromise = Sk.misceval.asyncToPromise(function () {
+                return Sk.importMainWithBody("<stdin>", false, "from maze import Maze\n\nmaze = Maze()\n\n" + prog, true);
+            });
+            return myPromise.then(function (mod) {
+                mypre.innerHTML += 'Total moves: ' + (window.Maze.getHistory().length - 1) + '<br />';
+            }, function (err) {
+                mypre.innerHTML = err.toString();
+            });
+        }
 
-        Sk.externalLibraries = {
-            maze: {
-                path: './maze/__init__.js'
+         window.smoothScroll = function (target) {
+            var scrollContainer = target;
+            do { //find scroll container
+                scrollContainer = scrollContainer.parentNode;
+                if (!scrollContainer) return;
+                scrollContainer.scrollTop += 1;
+            } while (scrollContainer.scrollTop == 0);
+            var targetY = 0;
+            do { //find the top of target relatively to the container
+                if (target == scrollContainer) break;
+                targetY += target.offsetTop;
+            } while (target = target.offsetParent);
+            scroll = function (c, a, b, i) {
+                i++; if (i > 30) return;
+                c.scrollTop = a + (b - a) / 30 * i;
+                setTimeout(function () { scroll(c, a, b, i); }, 20);
             }
-        };
-        Sk.configure({output: outf, read: builtinRead});
-        let myPromise = Sk.misceval.asyncToPromise(function () {
-            return Sk.importMainWithBody("<stdin>", false, "from maze import Maze\n\nmaze = Maze()\n\n" + prog, true);
-        });
-        return myPromise.then(function (mod) {
-            mypre.innerHTML += 'Total moves: ' + (window.Maze.getHistory().length - 1) + '<br />';
-        }, function (err) {
-            mypre.innerHTML = err.toString();
-        });
-    }
-</script>
+            // start scrolling
+            scroll(scrollContainer, scrollContainer.scrollTop, targetY, 0);
+        }
+    </script>
 </body>
 </html>

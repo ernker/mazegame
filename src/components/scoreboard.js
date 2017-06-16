@@ -39,39 +39,31 @@ class Scoreboard extends Component {
 
     return (
       <div>
-        <Col md={2} mdOffset={5}>
           <If cond={!this.state.status}>
             <div style={{
-              marginTop: 200
+              margin: 'auto auto'
             }}>
               <Halogen.PulseLoader color={color}/>
             </div>
           </If>
-        </Col>
-        <Col md={10} mdOffset={1}>
           <If cond={this.state.status}>
-            <div style={{
-              marginTop: 50
-            }}>
-              <Table>
-                <TableHeader displaySelectAll={false}>
-                  <TableRow>
-                    <TableHeaderColumn>Rank</TableHeaderColumn>
-                    <TableHeaderColumn>Name</TableHeaderColumn>
-                  </TableRow>
-                </TableHeader>
-                <TableBody displayRowCheckbox={false} stripedRows={false}>
+              <table className="table">
+                <thead className="thead-inverse">
+                  <tr>
+                      <th>Rank</th>
+                      <th>Name</th>
+                  </tr>
+                </thead>
+                <tbody>
                   {this.state.data.map((row, index) => (
-                    <TableRow key={index}>
-                      <TableRowColumn >{row.rank}</TableRowColumn>
-                      <TableRowColumn>{row.username}</TableRowColumn>
-                    </TableRow>
+                    <tr>
+                      <td >{row.rank}</td>
+                      <td>{row.username}</td>
+                    </tr>
                   ))}
-                </TableBody>
-              </Table>
-            </div>
+                </tbody>
+              </table>
           </If>
-        </Col>
       </div>
     );
   }
