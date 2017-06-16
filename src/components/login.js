@@ -26,7 +26,7 @@ class Login extends Component {
             password: this.state.password
         }
 
-        fetch('https://2hard4u.eu/api/tokens/', {
+        fetch('https://cloudsquad.lt/api/tokens/', {
             method: 'POST',
             headers: { 
                 'Content-Type': 'application/json'

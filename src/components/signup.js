@@ -60,7 +60,7 @@ class Signup extends Component {
             last_name: this.state.lastname
         }
 
-        fetch('https://2hard4u.eu/api/users/', {
+        fetch('https://cloudsquad.lt/api/users/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

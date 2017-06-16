@@ -22,7 +22,7 @@ class Scoreboard extends Component {
   }
 
   componentDidMount() {
-    fetch('https://2hard4u.eu/api/overall_scoreboard')
+    fetch('https://cloudsquad.lt/api/overall_scoreboard')
     .then(res => {
       if (res.ok) {
         return res.json();

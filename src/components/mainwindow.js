@@ -66,16 +66,18 @@ class MainWindow extends Component {
                                     <div className="rules">
                                         <div className="rules-text">
                                             <div className="row">
-                                                <h1>Rules of the game</h1>
-                                                <br/>
-                                                <p>The Maze is square 2D matrix containing corridors(0), walls(1), an entry(2)
-                                                    and an exit(3). The bot can only move up(), down(), left() and right().
-                                                </p>
-                                            </div>
+                                            <p style={{ textIndent: 20}} className="text-justify">
+                We invite everyone who can code Python (for now it is only Python) and loves challenges, to participate in competition of writing the most effective and efficient code to solve our „Maze“. 
+                This challenge will be running from late May till September 1st – with winners announced during first days of Septemeber, 2017. 
+                Prizes for you to compete for will be published till 1st of June – please keep an eye on this page! 
+                Are you strong and ready enough to conquer THE MAZE GAME? – prove it now by registering and providing your code!
+               </p>	
+					    </div>
                                             <div className="row">
                                                 <div className='col-sm-6 rules-CS-logo'></div>
                                                 <div className='col-sm-6 rules-CS-getmore'>
-                                                    <a className='rules-menu-button' onClick={() => this.handleClick('rules')} >give me more</a>
+							<br/>
+                                                    <a className='menu-button' onClick={() => this.handleClick('rules')} >rules?</a>
                                                 </div>
                                             </div>
                                         </div>
