@@ -217,23 +217,22 @@ class Mazegame extends React.Component {
         console.log(this.props)
 
         return (
-            <div>
-                <Col md={6}>
-                    <br/>
-                    <MazeCanvas/>
-                </Col>
-                <Col md={6}>
-                    <br/>
+            <div className="row" style={{width: '90%', margin: 'auto'}}>
+		<div className="row" style={{margin: '0px'}}>
+                  <div className="col-md-6">    
+		    <MazeCanvas/>
+		  </div>
+		  <div className="col-md-6">
+		    <div className="row">
                     <div
                         style={{
                         border: '2px solid lightgray'
                     }}>
                         <CodeMirror ref='editor' onChange={this.handleChange} options={options}/>
                     </div>
-                </Col>
-                <br/>
-                <Col md={6}>
-                    <RaisedButton
+		   </div>
+		   <div className="row">
+		    <RaisedButton
                         label='RUN'
                         onTouchTap={this
                         .handleRunClick
@@ -258,9 +257,20 @@ class Mazegame extends React.Component {
                             .handleSubmitCode
                             .bind(this)}/>
                     </If>
-                </Col>
-                <Col md={6} id="output"></Col>
-                {this.state.respmsg}
+		   </div>
+		   <div className="row">
+		     <div className="alert alert-info" id='output'>
+		    </div>
+
+		    <If cond={this.state.respmsg}>
+		    <div className="alert alert-warning">
+                	{this.state.respmsg}
+		    </div>
+		    </If>
+ 
+		   </div>
+                 </div>
+		</div>
             </div>
         )
     }

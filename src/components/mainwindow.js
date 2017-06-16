@@ -30,7 +30,7 @@ class MainWindow extends Component {
                 <div className="cd-overlay-content">
                     <span></span>
                 </div>
-                <div className='row cloud-bar'>
+                <div className='row cloud-bar' style={{position:'absolute', width:'100%'}}>
                     <div className='col-sm-12 clouds'>
                         <div className='cloud cloud-1'>
                             <img role="presentation" src='img/cloud.png'/></div>
@@ -48,16 +48,16 @@ class MainWindow extends Component {
                             <div className="col-md-12">
                                 <div className='col-sm-4 menu'>
                                     <div className='menu-buttons'>
-                                        <a className='menu-button' onClick={() => this.handleClick('body')}>play</a>
-                                        <a className='menu-button' onClick={() => this.handleClick('footer')}>high score</a>
-                                        <a className='menu-button' onClick={() => this.handleClick('about')}>about</a>
-                                        <a className='menu-button' onClick={() => this.handleClick('rules')}>rules</a>
+                                        <a className='menu-button' onClick={() => this.handleClick('body')}>Play</a>
+                                        <a className='menu-button' onClick={() => this.handleClick('footer')}>High score</a>
+                                        <a className='menu-button' onClick={() => this.handleClick('about')}>About</a>
+                                        <a className='menu-button' onClick={() => this.handleClick('rules')}>Rules</a>
                                         
                                         <IF cond={!this.props.isAuthenticated}>
-                                            <a className='menu-button' onClick={() => this.handleClick('login')}>signup/login</a>
+                                            <a className='menu-button' onClick={() => this.handleClick('login')}>Signup</a>
                                         </IF>
                                         <IF cond={this.props.isAuthenticated}>
-                                            <a className='menu-button' onClick={() => this.props.dispatch({type: 'LOGOUT'})}>logout</a>
+                                            <a className='menu-button' onClick={() => this.props.dispatch({type: 'LOGOUT'})}>Logout</a>
                                         </IF>
 
                                     </div>
@@ -67,13 +67,13 @@ class MainWindow extends Component {
                                         <div className="rules-text">
                                             <div className="row">
                                             <p style={{ textIndent: 20}} className="text-justify">
-                We invite everyone who can code Python (for now it is only Python) and loves challenges, to participate in competition of writing the most effective and efficient code to solve our „Maze“. 
+                <b>We invite</b> everyone who can code Python (for now it is only Python) and loves challenges, to participate in competition of writing the most effective and efficient code to solve our „Maze“. 
                 This challenge will be running from late May till September 1st – with winners announced during first days of Septemeber, 2017. 
-                Prizes for you to compete for will be published till 1st of June – please keep an eye on this page! 
-                Are you strong and ready enough to conquer THE MAZE GAME? – prove it now by registering and providing your code!
+                Prizes for You to compete for will be published till 1st of June – please keep an eye on this page! 
+                Are you strong and ready enough to conquer <b>THE MAZE GAME</b>? – prove it now by registering and providing your <b>code</b>!
                </p>	
 					    </div>
-                                            <div className="row">
+                                            <div className="row" style={{height:'150px'}}>
                                                 <div className='col-sm-6 rules-CS-logo'></div>
                                                 <div className='col-sm-6 rules-CS-getmore'>
 							<br/>
@@ -88,6 +88,7 @@ class MainWindow extends Component {
                     </div>
                 </div>
                 <div className="col-md-12 screen"></div>
+                <div className='page' id='body'>
                 <div className='row'>
                     <div className='col-sm-12 clouds'>
                         <div className='cloud cloud-1'>
@@ -100,8 +101,7 @@ class MainWindow extends Component {
                             <img role="presentation" src='img/cloud.png'/></div>
                     </div>
                 </div>
-                <div className='page'>
-                    <div className="row body" id="body">
+                    <div className="row body">
                         <div className="col-md-12">
                             <Mazegame />
                         </div>
