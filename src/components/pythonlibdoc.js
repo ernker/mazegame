@@ -4,46 +4,49 @@ export default class Pythonlibdoc extends React.Component {
 
     render() {
         return (
-            <div>
-                <h3>Python Lib docs</h3>
-                <h4>Python maze lib docs</h4>
+            <div className='rules-main-text'>
+                <h1 style={{ textAlign: 'center', fontSize: 30}}>Python Library documentation</h1><br />
                 <sub>
                     The Maze class will be instantiated for you and assigned to the 'maze' variable,
                     so you don't have to do it. All API calls should be made using that instance.
-                    The following code
-                    <b>should not be included</b>:
+                    The following code <span style={{ fontWeight: 'bold'}}>should not be included:</span>
                 </sub>
-                <p>
-                    from maze import Maze<br/>
+                <br />
+                <br />
+                <p style={{ textAlign: 'center',fontWeight: 'bold'}}>
+                    from maze import Maze <br />
                     maze = Maze()<br/>
                 </p>
-                <sub>
-                    At first, it is Start coordinates, otherwise this call gives current location:
-                </sub>
-                <p>
+                <br />
+                <br />
+                <p style={{ textAlign: 'center', fontWeight: 'bold'}}>
+                    All API calls
+                </p><br />
+                <p style={{ textAlign: 'center'}}>
+                    At first, it is Start coordinates, otherwise this call gives currennt location: <br/>
                     get_current_position()
-                </p>
-                <p>
+                </p><br />
+                <p style={{ textAlign: 'center'}}>
                     get_entry_position()
-                </p>
-                <p>
+                </p><br />
+                <p style={{ textAlign: 'center' }}>
                     get_neighbours()
-                </p>
-                <p>
+                </p><br />
+                <p style={{ textAlign: 'center' }}>
                     up()
-                </p>
-                <p>
+                </p><br />
+                <p style={{ textAlign: 'center'}}>
                     down()
-                </p>
-                <p>
+                </p><br />
+                <p style={{ textAlign: 'center'}}>
                     left()
-                </p>
-                <p>
+                </p><br />
+                <p style={{ textAlign: 'center'}}>
                     right()
-                </p>
-                <p>
+                </p><br />
+                <p style={{ textAlign: 'center'}}>
                     is_maze_solved()
-                </p>
+                </p><br />
             </div>
         )
     }

@@ -1,0 +1,61 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Bungee+Outline" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Play" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="main.css">
+</head>
+
+<body>
+
+
+    <div class='container'>
+        <div class='row'>
+            <div class='col-lg-12'>
+                <div class='header-text'>
+                    COMING SOON
+                </div>
+            </div>
+        </div>
+        <div class='row'>
+            <div class='col-lg-4'>
+                <div class='mazegame'></div>
+            </div>
+            <div class='col-lg-4'>
+                <div class='content-text'>POWERED by</div>
+            </div>
+            <div class='col-lg-4'>
+                <div class='cloudsquad'></div>
+            </div>
+        </div>
+        <div class='col-lg-4 col-lg-offset-4'>
+            <div class="input-group">
+                <input id="input" type="text" class="form-control" placeholder="Email address">
+                <span class="input-group-btn">
+                    <button class="btn btn-success" onclick="subscribe()" type="button">Notify me!</button>
+                </span>
+            </div>
+        </div>
+    </div>
+    <script>
+        var subscribe = function () {
+            var email = document.getElementById('input').value;
+            document.getElementById('input').value = '';
+
+            fetch('http://www.cloudsquad.lt/suscribe.php', {
+                method: 'POST',
+                body: email
+            }).then(function(response) {
+                console.log('Success')
+            }).catch(function(error){
+                console.log('Request failed', error)
+            })
+        }
+    </script>
+</body>
+
+</html>

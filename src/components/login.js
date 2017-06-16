@@ -1,9 +1,7 @@
 import React, {Component} from 'react'
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
-import FlatButton from 'material-ui/FlatButton';
 import {Col} from "react-bootstrap";
-import {Link} from 'react-router-dom';
 import { actionToken } from '../action/action';
 import {connect} from "react-redux";
 
@@ -23,7 +21,6 @@ class Login extends Component {
     
     handleClick(e) {
         e.preventDefault;
-        console.log('click!')
         const credentials = {
             username : this.state.username,
             password: this.state.password
@@ -50,8 +47,12 @@ class Login extends Component {
             })
             .then(res => {
                 this.props.dispatch(actionToken(res.token));
-                this.props.history.push('/ui/mazegame')
-            }).catch(error => console.log('There has been a problem with your fetch operation: ' + error.message));
+                return true
+            })
+            .then(res => {
+                window.smoothScroll(document.getElementById('body'));
+            })
+            .catch(error => console.log('There has been a problem with your fetch operation: ' + error.message));
     }
 
     handleUsername(e) {
@@ -64,26 +65,27 @@ class Login extends Component {
 
     render() {
         
+        const styles = {
+            underlineStyle: { borderColor:'grey900'},
+            floatingLabelStyle: { color: 'grey900'}
+        }
+
+        
         return (
-            <div>
-                <Col md={3} mdOffset={4} style={{ marginTop: 100 }}>
-                    <div style={{ color: '#00bcd4' }}>
+                <Col md={6}  style={{ marginTop: 100, textAlign: 'center' }}>
+                    <div style={{ color: 'grey900'}}>
                         <h2>Log in</h2>
                     </div>
-                    <TextField floatingLabelText="Username" onChange={this.handleUsername.bind(this)}/>
+                    <TextField underlineFocusStyle={styles.underlineStyle} floatingLabelStyle={styles.floatingLabelStyle} floatingLabelText="Nickname" onChange={this.handleUsername.bind(this)}/>
                     <br/>
-                    <TextField floatingLabelText="Password" type='password' onChange={this.handlePassword.bind(this)}/><br/>
+                    <TextField underlineFocusStyle={styles.underlineStyle} floatingLabelStyle={styles.floatingLabelStyle} floatingLabelText="Password" type='password' onChange={this.handlePassword.bind(this)}/><br/>
+                    <div style={{ marginTop: 20}}>
+                        <RaisedButton label="Go" backgroundColor='grey900'  onTouchTap={this.handleClick.bind(this)} />
+                    </div>
+                    <div style={{ marginTop: 20}}>
+                        {this.state.resmsg}
+                    </div>
                 </Col>
-                <Col md={3} mdOffset={4} style={{marginTop: 20}}>
-                    <Link to='/ui/signup'>
-                        <FlatButton label="Sign up" primary={true}/>
-                    </Link>
-                    <RaisedButton label="Go" primary={true} onTouchTap={this.handleClick.bind(this)} />
-                </Col>
-                <Col md={5} style={{marginTop: 20}}>
-                    {this.state.resmsg}
-                </Col>
-            </div>
         )
     }
 }

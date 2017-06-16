@@ -1,0 +1,324 @@
+@font-face {
+  font-family: 'topaz-new';
+  src: url('fonts/Topaznew.ttf') format('truetype');
+}
+
+body {
+  font-family: 'topaz-new';
+  background: #FFF;
+  margin:0px;
+  padding: 0px;
+
+}
+
+a {
+  color: #FFF;
+}
+a:hover {
+  text-decoration: none;
+}
+
+img {
+  height: auto;
+}
+
+.clouds {
+  top: 5px;
+  z-index: 2;
+  overflow: hidden;
+
+}
+.cloud-bar {
+  overflow: hidden;
+}
+
+.cloud {
+  -webkit-animation: clouds 5s infinite linear;
+  -moz-animation: clouds 5s infinite linear;
+  -ms-animation: clouds 5s infinite linear;
+  -o-animation: clouds 5s infinite linear;
+  animation: clouds 5s infinite linear;
+  position: relative;
+} 
+
+.cloud-1 {
+  animation-duration: 50s;
+  -moz-transform: scale(0.7, 0.7);
+  -ms-transform: scale(0.7, 0.7);
+  -webkit-transform: scale(0.7, 0.7);
+  transform: scale(0.7, 0.7);
+}
+
+.cloud-2 {
+  margin-top: -70px;
+  animation-duration: 60s;
+  -moz-transform: scale(0.6, 0.6);
+  -ms-transform: scale(0.6, 0.6);
+  -webkit-transform: scale(0.6, 0.6);
+  transform: scale(0.6, 0.6);
+}
+
+.cloud-3 {
+  animation-duration: 70s;
+  margin-top: -80px;
+  -moz-transform: scale(0.8, 0.8);
+  -ms-transform: scale(0.8, 0.8);
+  -webkit-transform: scale(0.8, 0.8);
+  transform: scale(0.8, 0.8);
+}
+
+.cloud-4 {
+  animation-duration: 80s;
+  margin-top: -110px;
+  -moz-transform: scale(0.4, 0.4);
+  -ms-transform: scale(0.4, 0.4);
+  -webkit-transform: scale(0.4, 0.4);
+  transform: scale(0.4, 0.4);
+}
+
+@-webkit-keyframes clouds {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 120%;
+  }
+}
+@-moz-keyframes clouds {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 120%;
+  }
+}
+@-ms-keyframes clouds {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 120%;
+  }
+}
+@keyframes clouds {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 120%;
+  }
+}
+
+.container {
+  min-width:100%;
+  padding: 0px;
+  display: block;
+}
+
+/*****************************/
+.cs-container {
+  /* this class is used to give a max-width to the element it is applied to, and center it horizontally when it reaches that max-width */
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.cs-container::after {
+  /* clearfix */
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.cs-main-content {
+  /* you need to assign a min-height to the main content so that the children can inherit it*/
+  height: 100%;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.cs-scrolling-bg {
+  position: relative;
+  background-image: url('../img/clouds.png');
+  background-repeat: no-repeat;
+  min-height: 100%;
+  padding: 4em 0;
+  line-height: 1.6;
+  /*box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);*/
+  z-index: 2;
+}
+
+/*****************************/
+.innerContainer {
+  display: block;
+  width:100%;
+  padding:0px;
+  margin:0px;
+  overflow: hidden;
+}
+.innerContainer .screen2{
+  min-width: 100%;
+  width: 100%;
+  height: auto;
+
+}
+
+.menu {
+  background-image: url('../img/the.png');
+  background-repeat: no-repeat;
+  padding:0px;
+  padding-top: 400px;
+  background-position-x: center;
+  background-position-y: 70px;
+  min-height: 250px;
+  -moz-transform: scale(0.9, 0.9);
+  -ms-transform: scale(0.9, 0.9);
+  -webkit-transform: scale(0.9, 0.9);
+  transform: scale(0.9, 0.9);
+
+}
+.menu-part {
+  min-height:740px;
+}
+
+.menu-buttons {
+  text-align: center;
+}
+
+.menu-button {
+  background: #000;
+  font-size: 30px;
+  padding: 3px;
+  color: #FFF;
+  width: 200px;
+  margin: 5px auto;
+  display: block;
+}
+.menu-button:hover {
+  color: #CCC;
+}
+
+.rules {
+  background: url("../img/stripe.png");
+  width: 750px;
+  height: auto;
+  padding: 25px;
+  margin: 0px auto;
+}
+
+
+.rules-text {
+
+  background: #FFF;
+  padding: 30px;
+  min-height:100%;
+  font-size: 30px;
+  color:#112211;
+
+}
+
+.rules-CS {
+  background: white;
+  height: 100%;
+}
+
+.rules-CS-logo {
+  background-image: url('../img/cloudsquaddraft5.png');
+  background-repeat: no-repeat;
+  background-size: 150px;
+  background-position: left center;
+  height: 150px;
+
+}
+
+.rules-CS-getmore {
+  background: white;
+  height: 150px;
+  text-align: center;
+}
+
+.rules-menu-button {
+
+  background: #000;
+  font-size: 30px;
+  padding: 10px;
+  color: #FFF;
+
+}
+.page {
+  min-height: 800px
+}
+.body {
+  padding: 10px;
+  
+}
+
+.high-score-tab {
+  margin: 0 auto;
+  width: 294px;
+  height: 131px;
+  background: url("../img/high-score-tab.png");
+  display: block;
+
+}
+
+.footer {
+    background: url('../img/footer1.png');
+    -webkit-background-size:cover;
+    -moz-background-size:cover;
+    -o-background-size:cover;
+    background-size:cover;
+    background-position:center;
+    width:100%;
+    height:60px;
+}    
+
+.screen {
+    background: url('../img/screen2.png');
+    background-repeat:no-repeat;
+    -webkit-background-size:cover;
+    -moz-background-size:cover;
+    -o-background-size:cover;
+    background-size:cover;
+    background-position:center;
+    width:100%;
+    height:0;
+    padding-top:69.947%;
+}
+
+.rules-main {
+  background: url("../img/stripe.png");
+  width: 80%;
+  
+  padding: 25px;
+  margin: 100px auto;
+}
+
+.rules-main-box {
+  background: #FFF;
+  padding: 30px;
+
+  width: 100%;
+  font-size: 20px;
+  color:#112211;
+}
+
+.rules-main-text {
+  font-family: 'Titillium Web', sans-serif;
+}
+
+/*
+.login-stripes {
+  background: url("../img/stripe.png");
+}
+
+.login-text {
+  background: white;
+  padding: 30px;
+  min-height: 100%;
+}
+
+.login {
+  background: white;
+  padding: 30px;
+}*/

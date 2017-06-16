@@ -1,0 +1,38 @@
+body {
+    background-color: #e3e0cc;
+}
+.cloudsquad {
+    background-image: url('./img/cloudsquaddraft52.png');
+    background-repeat: no-repeat;
+    background-size: 500px 400px;
+    height: 60%;
+    background-position-y: center;
+    background-position-x: 100%;
+    margin-top: 10px;
+
+}
+
+.mazegame {
+    background-image: url('./img/the.png');
+    background-repeat: no-repeat;
+    height: 60%;
+    background-position-y: center;
+    background-position-x: 100%;
+    margin-top: 10px;
+
+}
+
+.header-text {
+    font-family: 'Bungee Outline', cursive;
+    font-size: 60px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 40px;
+}
+
+.content-text {
+     text-align: center;
+     padding-top: 40%;
+     font-family: 'Play', sans-serif;
+     font-size: 50px;
+}

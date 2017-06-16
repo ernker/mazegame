@@ -183,7 +183,7 @@ Primary style
   width: 100%;
   padding: 80px 5%;
   z-index: 3;
-  background-color: #000;
+  background-color: white;
   overflow: auto;
   /* this fixes the buggy scrolling on webkit browsers - mobile devices only - when overflow property is applied */
   -webkit-overflow-scrolling: touch;
